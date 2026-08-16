@@ -6,41 +6,45 @@
 <title>Hood Blob — 444 Shapes. One Universe.</title>
 <meta name="description" content="Hood Blob — 444 shapes. One universe.">
 <style>
-:root{--bg:#050805;--panel:#09120b;--green:#45ff7a;--text:#f2f7f3;--muted:#8da493;--line:rgba(69,255,122,.18)}
+:root{--bg:#050805;--panel:#09120b;--green:#45ff7a;--text:#f4f7f5;--muted:#94a69a;--line:rgba(69,255,122,.18)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(circle at 70% 10%,#0c2615 0,#050805 38%,#030403 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(69,255,122,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(69,255,122,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
-nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1120px,92%);padding:12px 16px;border:1px solid var(--line);background:rgba(5,8,5,.72);backdrop-filter:blur(18px);border-radius:18px;display:flex;align-items:center;justify-content:space-between;z-index:20}
-.logo{font-weight:900;letter-spacing:.14em}nav a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:13px}nav a:hover{color:var(--green)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:800;font-size:13px;letter-spacing:.04em;transition:.25s}
+body{margin:0;background:radial-gradient(circle at 75% 0,#12321b 0,#050805 38%,#020302 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(69,255,122,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(69,255,122,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1160px,92%);padding:12px 16px;border:1px solid var(--line);background:rgba(5,8,5,.76);backdrop-filter:blur(18px);border-radius:18px;display:flex;align-items:center;justify-content:space-between;z-index:20}
+.logo{font-weight:950;letter-spacing:.16em}nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:13px}nav a:hover{color:var(--green)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:850;font-size:13px;letter-spacing:.04em;transition:.25s}
 .btn.primary{background:var(--green);color:#041007;box-shadow:0 0 35px rgba(69,255,122,.18)}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(69,255,122,.12)}
-section{width:min(1120px,92%);margin:auto;padding:110px 0}
+section{width:min(1160px,92%);margin:auto;padding:115px 0}
 .hero{min-height:100vh;display:grid;place-items:center;padding-top:130px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;width:100%}
-.eyebrow{color:var(--green);letter-spacing:.22em;font-size:11px;font-weight:800}
-h1{font-size:clamp(58px,10vw,128px);line-height:.85;margin:18px 0;letter-spacing:-.07em}
-h2{font-size:clamp(36px,5vw,64px);line-height:.95;margin:0 0 22px;letter-spacing:-.05em}
-.lead{font-size:clamp(18px,2vw,23px);line-height:1.55;color:var(--muted);max-width:580px}
-.hero-art{position:relative;display:grid;place-items:center;min-height:520px}
-.hero-art:before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(69,255,122,.13);filter:blur(70px)}
-.hero-art img{position:relative;max-width:min(90%,520px);max-height:540px;object-fit:contain;filter:drop-shadow(0 30px 50px rgba(0,0,0,.55));animation:float 5s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px) rotate(1deg)}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;width:100%}
+.eyebrow{color:var(--green);letter-spacing:.24em;font-size:11px;font-weight:900}
+h1{font-size:clamp(60px,10vw,132px);line-height:.84;margin:18px 0;letter-spacing:-.075em}
+h2{font-size:clamp(38px,5vw,66px);line-height:.95;margin:0 0 22px;letter-spacing:-.055em}
+.lead{font-size:clamp(18px,2vw,23px);line-height:1.55;color:var(--muted);max-width:600px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-art{position:relative;display:grid;place-items:center;min-height:550px}
+.hero-art:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(69,255,122,.13);filter:blur(80px)}
+.hero-art img{position:relative;width:min(92%,540px);aspect-ratio:1;object-fit:contain;border-radius:32px;filter:drop-shadow(0 35px 65px rgba(0,0,0,.58));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(1deg)}}
 .story{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .story-card{background:linear-gradient(145deg,rgba(69,255,122,.07),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:30px;padding:46px}
-.story-text{font-size:clamp(22px,3vw,36px);line-height:1.4;max-width:850px}.story-text strong{color:var(--green)}
+.story-text{font-size:clamp(22px,3vw,36px);line-height:1.42;max-width:880px}.story-text strong{color:var(--green)}
+.visual-strip{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:28px}
+.visual-strip img{width:100%;height:300px;object-fit:cover;border-radius:24px;border:1px solid var(--line);background:#070b08}
 .center{text-align:center}.center .lead{margin:0 auto}
-.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
-.gallery img{width:100%;aspect-ratio:1/1;object-fit:contain;background:linear-gradient(145deg,#081109,#030503);border:1px solid var(--line);border-radius:22px;padding:10px;transition:.35s}
-.gallery img:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(69,255,122,.5);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+.gallery figure{margin:0;padding:10px;border:1px solid var(--line);border-radius:25px;background:linear-gradient(145deg,#09120b,#030503);overflow:hidden}
+.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;transition:.35s}
+.gallery figure:hover img{transform:scale(1.035)}
+.gallery figcaption{padding:12px 5px 5px;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 .mint{background:radial-gradient(circle at 50% 0,rgba(69,255,122,.12),transparent 50%);text-align:center}
-.mint-box{max-width:700px;margin:38px auto 0;padding:42px;border:1px solid var(--line);border-radius:30px;background:rgba(8,17,9,.72);box-shadow:0 30px 100px rgba(0,0,0,.3)}
-.stats{display:flex;justify-content:center;gap:42px;flex-wrap:wrap;margin:26px 0}.stat b{display:block;font-size:28px}.stat span{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.mint-box{max-width:720px;margin:38px auto 0;padding:42px;border:1px solid var(--line);border-radius:30px;background:rgba(8,17,9,.72);box-shadow:0 30px 100px rgba(0,0,0,.3)}
+.stats{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;margin:26px 0}.stat b{display:block;font-size:30px}.stat span{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}.card{padding:30px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.02)}.card h3{margin:0 0 10px;color:var(--green)}.card p{color:var(--muted);line-height:1.6}
 .roadmap{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px}.phase{padding:30px;border:1px solid var(--line);border-radius:24px}.phase small{color:var(--green);letter-spacing:.15em}.phase h3{font-size:24px;margin:10px 0}.phase p{color:var(--muted);line-height:1.6}
 .token{text-align:center;border:1px solid var(--line);border-radius:34px;padding:70px 25px;background:linear-gradient(145deg,rgba(69,255,122,.07),rgba(0,0,0,.1))}
-footer{width:min(1120px,92%);margin:auto;padding:55px 0 70px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
-@media(max-width:800px){nav{top:10px}nav .links{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:130px}.hero-art{min-height:360px;order:-1}.gallery{grid-template-columns:repeat(2,1fr)}.cards,.roadmap{grid-template-columns:1fr}.story-card{padding:28px}footer{display:block}footer div+div{margin-top:12px}}
+footer{width:min(1160px,92%);margin:auto;padding:55px 0 70px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+@media(max-width:800px){nav{top:10px}nav .links{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:130px}.hero-art{min-height:360px;order:-1}.gallery{grid-template-columns:repeat(2,1fr)}.cards,.roadmap,.visual-strip{grid-template-columns:1fr}.visual-strip img{height:260px}.story-card{padding:28px}footer{display:block}footer div+div{margin-top:12px}}
 </style>
 </head>
 <body>
@@ -56,7 +60,7 @@ footer{width:min(1120px,92%);margin:auto;padding:55px 0 70px;border-top:1px soli
 <div>
 <div class="eyebrow">444 UNIQUE SHAPES</div>
 <h1>HOOD<br>BLOB</h1>
-<p class="lead">444 shapes. One universe.<br>Nobody knows where they came from. They simply exist.</p>
+<p class="lead">Nobody knows where they came from.<br>They don't speak. They don't sleep. They don't follow rules.<br><strong style="color:#f4f7f5">They simply exist.</strong></p>
 <div class="actions"><a class="btn primary" href="https://opensea.io/" target="_blank" rel="noopener">MINT ON OPENSEA ↗</a><a class="btn" href="#story">ENTER THE HOOD ↓</a></div>
 </div>
 <div class="hero-art"><img src="assets/blob-1.png" alt="Hood Blob"></div>
@@ -69,19 +73,32 @@ footer{width:min(1120px,92%);margin:auto;padding:55px 0 70px;border-top:1px soli
 <h2>THEY JUST APPEARED.</h2>
 <div class="story-text">Nobody knows where they came from.<br>They don't speak. They don't sleep. They don't follow rules.<br><strong>They simply exist.</strong><br><br>Some are strange. Some are rare. Some are impossible to explain.<br>Together, they form the Hood.</div>
 </div>
+<div class="visual-strip">
+<img src="assets/blob-2.png" alt="Hood Blob">
+<img src="assets/blob-3.png" alt="Hood Blob">
+<img src="assets/blob-4.png" alt="Hood Blob">
+</div>
 </section>
 
 <section id="collection">
 <div class="center"><div class="eyebrow">THE COLLECTION</div><h2>444 UNIQUE BLOBS</h2><p class="lead">Different shapes. Different personalities. One strange universe.</p></div>
 <div class="gallery">
-<img src="assets/blob-1.png" alt="Hood Blob 1"><img src="assets/blob-2.png" alt="Hood Blob 2"><img src="assets/blob-3.png" alt="Hood Blob 3"><img src="assets/blob-4.png" alt="Hood Blob 4"><img src="assets/blob-5.png" alt="Hood Blob 5">
+<figure><img src="assets/blob-1.png"><figcaption>01 / THE FIRST SIGHT</figcaption></figure>
+<figure><img src="assets/blob-2.png"><figcaption>02 / THE WINK</figcaption></figure>
+<figure><img src="assets/blob-3.png"><figcaption>03 / THE SIGNAL</figcaption></figure>
+<figure><img src="assets/blob-4.png"><figcaption>04 / THE GRIN</figcaption></figure>
+<figure><img src="assets/blob-5.png"><figcaption>05 / THE STRANGE ONE</figcaption></figure>
+<figure><img src="assets/blob-6.png"><figcaption>06 / THE SILENT ONE</figcaption></figure>
+<figure><img src="assets/blob-7.png"><figcaption>07 / THE HOODED ONE</figcaption></figure>
+<figure><img src="assets/blob-8.png"><figcaption>08 / THE NIGHT SHIFT</figcaption></figure>
+<figure><img src="assets/blob-9.png"><figcaption>09 / THE UNKNOWN</figcaption></figure>
 </div>
 </section>
 
 <section id="mint" class="mint">
 <div class="eyebrow">FIND YOUR BLOB</div><h2>ENTER THE HOOD.</h2><p class="lead">Somewhere inside the Hood, one of them is waiting for you.</p>
 <div class="mint-box">
-<div class="stats"><div class="stat"><b>444</b><span>Supply</span></div><div class="stat"><b>OpenSea</b><span>Marketplace</span></div><div class="stat"><b>Live</b><span>Status</span></div></div>
+<div class="stats"><div class="stat"><b>444</b><span>Supply</span></div><div class="stat"><b>OpenSea</b><span>Marketplace</span></div><div class="stat"><b>LIVE</b><span>Status</span></div></div>
 <a class="btn primary" href="https://opensea.io/" target="_blank" rel="noopener">MINT ON OPENSEA ↗</a>
 </div>
 </section>
@@ -117,8 +134,8 @@ footer{width:min(1120px,92%);margin:auto;padding:55px 0 70px;border-top:1px soli
 <section id="community">
 <div class="center"><div class="eyebrow">JOIN THE HOOD</div><h2>FOUND YOUR WAY IN?</h2><p class="lead">The story is better when you're inside.</p>
 <div class="actions" style="justify-content:center">
-<a class="btn primary" href="https://x.com/" target="_blank" rel="noopener">FOLLOW ON X ↗</a>
-<a class="btn" href="https://t.me/" target="_blank" rel="noopener">JOIN TELEGRAM ↗</a>
+<a class="btn primary" href="https://x.com/hoodblob" target="_blank" rel="noopener">FOLLOW ON X ↗</a>
+<a class="btn" href="https://t.me/hoodblob" target="_blank" rel="noopener">JOIN TELEGRAM ↗</a>
 </div></div>
 </section>
 </main>
