@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hood Blob — 444 Shapes. One Universe.</title>
+<meta name="description" content="Nobody knows where they came from. 444 shapes. One universe. Welcome to Hood Blob.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#070b0a;color:#f4fff8;line-height:1.5}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:10;background:rgba(7,11,10,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:22px;letter-spacing:-1px}
+.logo span{color:#37ff8b}
+.links{display:flex;gap:24px;font-size:14px;color:#c9d5ce}
+.links a:hover{color:#37ff8b}
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:80px 0;background:radial-gradient(circle at 50% 35%,#123d25 0,#07100c 42%,#050706 75%)}
+.hero img{width:min(340px,72vw);aspect-ratio:1;object-fit:cover;border-radius:28px;box-shadow:0 30px 100px rgba(30,255,120,.18);border:1px solid rgba(255,255,255,.12)}
+.kicker{margin-top:34px;color:#37ff8b;font-size:12px;letter-spacing:4px;font-weight:800}
+h1{font-size:clamp(48px,9vw,100px);line-height:.92;letter-spacing:-5px;margin:16px 0}
+.hero p{max-width:680px;margin:0 auto;color:#aab8b0;font-size:18px}
+.buttons{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 22px;border-radius:999px;border:1px solid #24342b;font-weight:800;font-size:14px}
+.btn.primary{background:#37ff8b;color:#061009;border-color:#37ff8b}
+section{padding:110px 0}
+.section-title{font-size:clamp(34px,6vw,60px);letter-spacing:-3px;margin-bottom:18px}
+.muted{color:#8f9d95;max-width:720px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.story img{width:100%;border-radius:26px;border:1px solid rgba(255,255,255,.08)}
+.quote{font-size:28px;font-weight:800;line-height:1.15;margin:30px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.card{background:#0c1310;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:12px;overflow:hidden}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:15px;display:block}
+footer{padding:55px 0;border-top:1px solid rgba(255,255,255,.08);color:#77847d}
+.footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:750px){
+ .links{gap:12px}.links a:nth-child(1){display:none}
+ .story{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}
+ h1{letter-spacing:-3px}
+}
+</style>
+</head>
+<body>
 
+<nav>
+  <div class="container navin">
+    <a class="logo" href="#">HOOD <span>BLOB</span></a>
+    <div class="links">
+      <a href="#story">Story</a>
+      <a href="#collection">Collection</a>
+      <a href="https://x.com/hoodblob" target="_blank" rel="noopener">X</a>
+      <a href="https://t.me/hoodblob" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <img src="blob-1.png" alt="Hood Blob">
+    <div class="kicker">444 SHAPES · ONE UNIVERSE</div>
+    <h1>HOOD BLOB</h1>
+    <p>Nobody knows where they came from. They don't speak. They don't sleep. They don't follow rules. They simply exist.</p>
+    <div class="buttons">
+      <a class="btn primary" href="https://opensea.io/" target="_blank" rel="noopener">VIEW ON OPENSEA</a>
+      <a class="btn" href="https://x.com/hoodblob" target="_blank" rel="noopener">FOLLOW ON X</a>
+    </div>
+  </div>
+</header>
+
+<section id="story">
+  <div class="container story">
+    <div>
+      <div class="kicker">THE STORY</div>
+      <h2 class="section-title">They were never meant to fit in.</h2>
+      <p class="muted">Somewhere between noise and nothingness, the Blobs appeared. No origin story. No instructions. No rules. Just strange shapes with personalities of their own.</p>
+      <div class="quote">“The Hood isn't a place. It's a state of mind.”</div>
+      <p class="muted">444 unique Blobs. Different shapes. Different moods. One universe. Welcome to the Hood.</p>
+    </div>
+    <img src="blob-2.png" alt="Hood Blob character">
+  </div>
+</section>
+
+<section id="collection">
+  <div class="container">
+    <div class="kicker">THE COLLECTION</div>
+    <h2 class="section-title">444 HOOD BLOBS</h2>
+    <p class="muted">No two Blobs need to feel the same. Meet a few residents of the Hood.</p>
+    <div class="grid">
+      <div class="card"><img src="blob-1.png" alt="Hood Blob 1"></div>
+      <div class="card"><img src="blob-2.png" alt="Hood Blob 2"></div>
+      <div class="card"><img src="blob-3.png" alt="Hood Blob 3"></div>
+      <div class="card"><img src="blob-4.png" alt="Hood Blob 4"></div>
+      <div class="card"><img src="blob-5.png" alt="Hood Blob 5"></div>
+      <div class="card"><img src="blob-6.png" alt="Hood Blob 6"></div>
+      <div class="card"><img src="blob-7.png" alt="Hood Blob 7"></div>
+      <div class="card"><img src="blob-8.png" alt="Hood Blob 8"></div>
+      <div class="card"><img src="blob-9.png" alt="Hood Blob 9"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footerin">
+    <div>© 2026 HOOD BLOB</div>
+    <div><a href="https://x.com/hoodblob" target="_blank" rel="noopener">X</a> · <a href="https://t.me/hoodblob" target="_blank" rel="noopener">Telegram</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
