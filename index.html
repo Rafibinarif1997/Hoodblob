@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hood Blob — 444 Shapes. One Universe.</title>
+<meta name="description" content="Hood Blob — 444 shapes. One universe.">
+<style>
+:root{--bg:#050805;--panel:#09120b;--green:#45ff7a;--text:#f2f7f3;--muted:#8da493;--line:rgba(69,255,122,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 70% 10%,#0c2615 0,#050805 38%,#030403 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(69,255,122,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(69,255,122,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1120px,92%);padding:12px 16px;border:1px solid var(--line);background:rgba(5,8,5,.72);backdrop-filter:blur(18px);border-radius:18px;display:flex;align-items:center;justify-content:space-between;z-index:20}
+.logo{font-weight:900;letter-spacing:.14em}nav a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:13px}nav a:hover{color:var(--green)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:800;font-size:13px;letter-spacing:.04em;transition:.25s}
+.btn.primary{background:var(--green);color:#041007;box-shadow:0 0 35px rgba(69,255,122,.18)}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(69,255,122,.12)}
+section{width:min(1120px,92%);margin:auto;padding:110px 0}
+.hero{min-height:100vh;display:grid;place-items:center;padding-top:130px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;width:100%}
+.eyebrow{color:var(--green);letter-spacing:.22em;font-size:11px;font-weight:800}
+h1{font-size:clamp(58px,10vw,128px);line-height:.85;margin:18px 0;letter-spacing:-.07em}
+h2{font-size:clamp(36px,5vw,64px);line-height:.95;margin:0 0 22px;letter-spacing:-.05em}
+.lead{font-size:clamp(18px,2vw,23px);line-height:1.55;color:var(--muted);max-width:580px}
+.hero-art{position:relative;display:grid;place-items:center;min-height:520px}
+.hero-art:before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(69,255,122,.13);filter:blur(70px)}
+.hero-art img{position:relative;max-width:min(90%,520px);max-height:540px;object-fit:contain;filter:drop-shadow(0 30px 50px rgba(0,0,0,.55));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(1deg)}}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.story{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.story-card{background:linear-gradient(145deg,rgba(69,255,122,.07),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:30px;padding:46px}
+.story-text{font-size:clamp(22px,3vw,36px);line-height:1.4;max-width:850px}.story-text strong{color:var(--green)}
+.center{text-align:center}.center .lead{margin:0 auto}
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+.gallery img{width:100%;aspect-ratio:1/1;object-fit:contain;background:linear-gradient(145deg,#081109,#030503);border:1px solid var(--line);border-radius:22px;padding:10px;transition:.35s}
+.gallery img:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(69,255,122,.5);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.mint{background:radial-gradient(circle at 50% 0,rgba(69,255,122,.12),transparent 50%);text-align:center}
+.mint-box{max-width:700px;margin:38px auto 0;padding:42px;border:1px solid var(--line);border-radius:30px;background:rgba(8,17,9,.72);box-shadow:0 30px 100px rgba(0,0,0,.3)}
+.stats{display:flex;justify-content:center;gap:42px;flex-wrap:wrap;margin:26px 0}.stat b{display:block;font-size:28px}.stat span{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}.card{padding:30px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.02)}.card h3{margin:0 0 10px;color:var(--green)}.card p{color:var(--muted);line-height:1.6}
+.roadmap{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px}.phase{padding:30px;border:1px solid var(--line);border-radius:24px}.phase small{color:var(--green);letter-spacing:.15em}.phase h3{font-size:24px;margin:10px 0}.phase p{color:var(--muted);line-height:1.6}
+.token{text-align:center;border:1px solid var(--line);border-radius:34px;padding:70px 25px;background:linear-gradient(145deg,rgba(69,255,122,.07),rgba(0,0,0,.1))}
+footer{width:min(1120px,92%);margin:auto;padding:55px 0 70px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+@media(max-width:800px){nav{top:10px}nav .links{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:130px}.hero-art{min-height:360px;order:-1}.gallery{grid-template-columns:repeat(2,1fr)}.cards,.roadmap{grid-template-columns:1fr}.story-card{padding:28px}footer{display:block}footer div+div{margin-top:12px}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">HOOD BLOB</div>
+<div class="links"><a href="#story">Story</a><a href="#collection">Collection</a><a href="#mint">Mint</a><a href="#roadmap">Roadmap</a><a href="#community">Community</a></div>
+<a class="btn primary" href="https://opensea.io/" target="_blank" rel="noopener">MINT NOW ↗</a>
+</nav>
+
+<main>
+<section class="hero">
+<div class="hero-grid">
+<div>
+<div class="eyebrow">444 UNIQUE SHAPES</div>
+<h1>HOOD<br>BLOB</h1>
+<p class="lead">444 shapes. One universe.<br>Nobody knows where they came from. They simply exist.</p>
+<div class="actions"><a class="btn primary" href="https://opensea.io/" target="_blank" rel="noopener">MINT ON OPENSEA ↗</a><a class="btn" href="#story">ENTER THE HOOD ↓</a></div>
+</div>
+<div class="hero-art"><img src="assets/blob-1.png" alt="Hood Blob"></div>
+</div>
+</section>
+
+<section id="story" class="story">
+<div class="story-card">
+<div class="eyebrow">THE ARRIVAL</div>
+<h2>THEY JUST APPEARED.</h2>
+<div class="story-text">Nobody knows where they came from.<br>They don't speak. They don't sleep. They don't follow rules.<br><strong>They simply exist.</strong><br><br>Some are strange. Some are rare. Some are impossible to explain.<br>Together, they form the Hood.</div>
+</div>
+</section>
+
+<section id="collection">
+<div class="center"><div class="eyebrow">THE COLLECTION</div><h2>444 UNIQUE BLOBS</h2><p class="lead">Different shapes. Different personalities. One strange universe.</p></div>
+<div class="gallery">
+<img src="assets/blob-1.png" alt="Hood Blob 1"><img src="assets/blob-2.png" alt="Hood Blob 2"><img src="assets/blob-3.png" alt="Hood Blob 3"><img src="assets/blob-4.png" alt="Hood Blob 4"><img src="assets/blob-5.png" alt="Hood Blob 5">
+</div>
+</section>
+
+<section id="mint" class="mint">
+<div class="eyebrow">FIND YOUR BLOB</div><h2>ENTER THE HOOD.</h2><p class="lead">Somewhere inside the Hood, one of them is waiting for you.</p>
+<div class="mint-box">
+<div class="stats"><div class="stat"><b>444</b><span>Supply</span></div><div class="stat"><b>OpenSea</b><span>Marketplace</span></div><div class="stat"><b>Live</b><span>Status</span></div></div>
+<a class="btn primary" href="https://opensea.io/" target="_blank" rel="noopener">MINT ON OPENSEA ↗</a>
+</div>
+</section>
+
+<section>
+<div class="center"><div class="eyebrow">THE HOOD</div><h2>MORE THAN A PFP.</h2><p class="lead">A simple identity built around 444 strange shapes and the people who find them.</p></div>
+<div class="cards">
+<div class="card"><h3>COMMUNITY</h3><p>Build the Hood together. Share art, memes, ideas and the story as it grows.</p></div>
+<div class="card"><h3>FUTURE DROPS</h3><p>Early access and special opportunities can become part of the Hood ecosystem.</p></div>
+<div class="card"><h3>THE STORY</h3><p>The universe starts with 444 Blobs. What comes next is still being written.</p></div>
+</div>
+</section>
+
+<section id="roadmap">
+<div class="center"><div class="eyebrow">THE STORY CONTINUES</div><h2>ROADMAP</h2></div>
+<div class="roadmap">
+<div class="phase"><small>PHASE 01</small><h3>THE ARRIVAL</h3><p>Community, lore, artwork and collection reveal.</p></div>
+<div class="phase"><small>PHASE 02</small><h3>THE MINT</h3><p>444 Hood Blobs enter the universe.</p></div>
+<div class="phase"><small>PHASE 03</small><h3>THE HOOD</h3><p>Grow the community and build the ecosystem around the collection.</p></div>
+<div class="phase"><small>PHASE 04</small><h3>THE NEXT CHAPTER</h3><p>Future ecosystem development, announced when ready.</p></div>
+</div>
+</section>
+
+<section>
+<div class="token">
+<div class="eyebrow">SOMETHING IS COMING</div>
+<h2>THE HOOD WILL HAVE<br>ITS OWN CURRENCY.</h2>
+<p class="lead">A future token layer is being explored. Details will be announced when the time is right.</p>
+<div class="btn" style="margin-top:24px">COMING SOON</div>
+</div>
+</section>
+
+<section id="community">
+<div class="center"><div class="eyebrow">JOIN THE HOOD</div><h2>FOUND YOUR WAY IN?</h2><p class="lead">The story is better when you're inside.</p>
+<div class="actions" style="justify-content:center">
+<a class="btn primary" href="https://x.com/" target="_blank" rel="noopener">FOLLOW ON X ↗</a>
+<a class="btn" href="https://t.me/" target="_blank" rel="noopener">JOIN TELEGRAM ↗</a>
+</div></div>
+</section>
+</main>
+
+<footer><div><strong style="color:#f2f7f3">HOOD BLOB</strong><br>444 shapes. One universe.</div><div>not human. not robot. just shape.</div></footer>
+</body>
+</html>
