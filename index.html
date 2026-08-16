@@ -106,16 +106,18 @@ section[id], header[id]{scroll-margin-top:92px}
 .logo img{flex:none}
 .logo span:not(.dot){display:inline-block}
 
-/* PREMIUM WHITELIST CTA */
-.whitelist-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:190px;padding:13px 22px;border-radius:999px;color:#fff;background:linear-gradient(135deg,#a56cff,#6d3fe7);border:1px solid rgba(255,255,255,.25);box-shadow:0 0 0 1px rgba(165,108,255,.18),0 12px 35px rgba(125,72,235,.25);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transition:transform .25s ease,box-shadow .25s ease;isolation:isolate;}
-.whitelist-btn:before{content:"";position:absolute;inset:-60% -30%;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.5) 48%,transparent 61%);transform:translateX(-70%) rotate(8deg);transition:transform .7s ease;z-index:-1;}
-.whitelist-btn:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 16px 45px rgba(125,72,235,.38),0 0 30px rgba(165,108,255,.18);}
-.whitelist-btn:hover:before{transform:translateX(70%) rotate(8deg);}
-.whitelist-btn .pulse{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.65);animation:whitelistPulse 1.8s infinite;}
-.whitelist-btn.clicked{animation:whitelistClick .45s ease;}
-@keyframes whitelistPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}50%{box-shadow:0 0 0 7px rgba(255,255,255,0)}}
-@keyframes whitelistClick{0%{transform:scale(1)}45%{transform:scale(.94)}100%{transform:scale(1)}}
-.whitelist-note{display:block;margin-top:9px;color:#777481;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;}
+/* PREMIUM LIVE WHITELIST CHECKER */
+.wl-section{padding:110px 20px;position:relative}
+.wl-card{max-width:760px;margin:0 auto;padding:42px;border:1px solid rgba(255,255,255,.11);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 30px 90px rgba(0,0,0,.35);backdrop-filter:blur(18px)}
+.wl-inputrow{display:flex;gap:10px;margin-top:26px}
+.wl-input{flex:1;min-width:0;padding:17px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.28);color:#fff;outline:none;font:inherit}
+.wl-input:focus{border-color:#a56cff;box-shadow:0 0 0 4px rgba(165,108,255,.09)}
+.wl-check{border:0;border-radius:14px;padding:0 24px;background:linear-gradient(135deg,#a56cff,#6d3fe7);color:#fff;font-weight:800;letter-spacing:.8px;cursor:pointer}
+.wl-result{margin-top:18px;min-height:66px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);padding:16px}
+.wl-result.ok{border-color:rgba(80,255,170,.35);background:rgba(80,255,170,.06)}
+.wl-result.no{border-color:rgba(255,90,120,.25);background:rgba(255,90,120,.05)}
+.wl-meta{margin-top:13px;color:#8e8b98;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-align:center}
+@media(max-width:620px){.wl-card{padding:26px 18px}.wl-inputrow{flex-direction:column}.wl-check{height:52px}}
 </style>
 </head>
 <body id="top">
@@ -141,12 +143,6 @@ section[id], header[id]{scroll-margin-top:92px}
     <div class="actions">
       <a class="btn primary opensea-link" href="#opensea">OpenSea</a>
       <a class="btn" href="#collection">View Collection</a>
-    </div>
-    <div style="margin-top:22px">
-      <a class="whitelist-btn" id="joinWhitelist" href="https://x.com/i/status/2089004450853933426" target="_blank" rel="noopener noreferrer" aria-label="Join Whitelist">
-        <span class="pulse"></span> Join Whitelist
-      </a>
-      <span class="whitelist-note">Whitelist is open · 24 hours</span>
     </div>
   </div>
 </header>
@@ -225,6 +221,21 @@ section[id], header[id]{scroll-margin-top:92px}
 
 
 
+
+<section class="wl-section" id="whitelist">
+  <div class="wl-card">
+    <div class="kicker">Hood Blob Access</div>
+    <h2>Check your whitelist.</h2>
+    <p class="muted">Enter your wallet address to verify your current $HBLOOB whitelist eligibility.</p>
+    <div class="wl-inputrow">
+      <input id="wlAddress" class="wl-input" autocomplete="off" spellcheck="false" placeholder="0x..." aria-label="Wallet address">
+      <button id="wlCheck" class="wl-check">CHECK ELIGIBILITY</button>
+    </div>
+    <div id="wlResult" class="wl-result">Enter a wallet address above.</div>
+    <div id="wlMeta" class="wl-meta"></div>
+  </div>
+</section>
+
 <section class="cta">
   <div class="kicker">Stay connected</div>
   <h2>Follow the blob.</h2>
@@ -259,16 +270,39 @@ section[id], header[id]{scroll-margin-top:92px}
 })();
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
-  const btn = document.getElementById("joinWhitelist");
-  if(!btn) return;
-
-  btn.addEventListener("click", function(){
-    btn.classList.remove("clicked");
-    void btn.offsetWidth;
-    btn.classList.add("clicked");
-  });
+  // ONE-TIME CONFIG: paste your Supabase Project URL + anon public key here.
+  const SUPABASE_URL = 'https://gqcdkjsewvpnubpnnbum.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_q9oGmojaQjcPwWgXXQgTlA_WDl4JrFl';
+  const configured = !SUPABASE_URL.includes('YOUR_') && !SUPABASE_ANON_KEY.includes('YOUR_');
+  const result=document.getElementById('wlResult'), meta=document.getElementById('wlMeta');
+  const input=document.getElementById('wlAddress'), btn=document.getElementById('wlCheck');
+  if(!result||!input||!btn) return;
+  const normalize=v=>v.trim().toLowerCase();
+  async function check(){
+    const address=normalize(input.value);
+    meta.textContent=''; result.className='wl-result';
+    if(!/^0x[a-f0-9]{40}$/.test(address)){ result.textContent='Please enter a valid wallet address.'; result.classList.add('no'); return; }
+    if(!configured){ result.textContent='Whitelist checker is being configured.'; return; }
+    btn.disabled=true; btn.textContent='CHECKING...'; result.textContent='Checking the live whitelist...';
+    try{
+      const {data,error}=await window.supabase.from('whitelist').select('wallet,allocation,status').eq('wallet',address).maybeSingle();
+      if(error) throw error;
+      if(data && data.status !== 'revoked'){
+        result.innerHTML='<strong>✓ WHITELISTED</strong><br><span style="display:block;margin-top:6px;font-size:12px;opacity:.8">You are eligible for the Hood Blob whitelist.</span>';
+        result.classList.add('ok');
+        meta.textContent='Allocation: '+(data.allocation ?? 1);
+      }else{
+        result.innerHTML='<strong>NOT WHITELISTED</strong><br><span style="display:block;margin-top:6px;font-size:12px;opacity:.8">This wallet is not currently eligible.</span>';
+        result.classList.add('no');
+      }
+    }catch(e){ console.error(e); result.textContent='Unable to check right now. Please try again.'; result.classList.add('no'); }
+    finally{ btn.disabled=false; btn.textContent='CHECK ELIGIBILITY'; }
+  }
+  if(configured) window.supabase=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+  btn.addEventListener('click',check); input.addEventListener('keydown',e=>{if(e.key==='Enter')check()});
 })();
 </script>
 </body>
