@@ -3,111 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RandomNFT — No API Generator</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<title>ANSEM STORY — Pixel Character Collection</title>
+<meta name="description" content="ANSEM STORY — one face, endless stories.">
 <style>
-:root{--bg:#07080d;--panel:#11151e;--panel2:#171c26;--line:#293140;--text:#f8f9fc;--muted:#8c96a8;--a:#8d70ff;--a2:#b7a5ff;--good:#3bdb91}
-*{box-sizing:border-box}body{margin:0;color:var(--text);font-family:Inter,system-ui,Arial;background:radial-gradient(900px 500px at 10% -10%,#352164,transparent 55%),radial-gradient(850px 500px at 100% 5%,#153c42,transparent 50%),var(--bg)}
-header{height:72px;padding:0 22px;border-bottom:1px solid #202631;background:#08090ddd;backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}.logo{font-size:22px;font-weight:950}.logo span{color:var(--a2)}.badge{font-size:9px;border:1px solid #514287;color:#d4caff;border-radius:99px;padding:4px 7px;margin-left:7px}.app{width:min(1180px,100%);margin:22px auto;padding:0 14px;display:grid;grid-template-columns:390px 1fr;gap:16px}.panel,.stage{background:linear-gradient(180deg,#121720,#0d1118);border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 70px #0006}.panel{padding:18px}.title{font-size:14px;font-weight:950;margin-bottom:10px}.muted{font-size:10px;color:var(--muted);line-height:1.55}.drop{height:320px;border:1px dashed #4b5669;border-radius:15px;background:#090d13;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;overflow:hidden;transition:.2s}.drop:hover,.drop.drag{border-color:var(--a);background:#15112a}.drop img{width:100%;height:100%;object-fit:contain}.drop input{display:none}.section{border-top:1px solid #242b37;margin-top:18px;padding-top:16px}.choices{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.choice{border:1px solid var(--line);background:#151a23;color:#fff;border-radius:9px;padding:10px 5px;font-size:10px;font-weight:900}.choice.active{background:#251d47;border-color:var(--a);color:#ddd5ff}.field{width:100%;background:#090d13;color:#fff;border:1px solid #2b3341;border-radius:9px;padding:10px;outline:none}.field:focus{border-color:var(--a)}label{display:block;font-size:10px;font-weight:850;color:#c8cfdb;margin:11px 0 5px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:7px}.check{padding:9px;border:1px solid #272e3a;background:#0b0f15;border-radius:9px;font-size:9px;display:flex;gap:7px;align-items:center}.check input{accent-color:var(--a)}.btn{border:1px solid var(--line);background:#161b25;color:#fff;border-radius:10px;padding:10px 13px;font-size:10px;font-weight:900;transition:.18s}.btn:hover{transform:translateY(-1px);border-color:var(--a)}.primary{background:linear-gradient(135deg,#967aff,#6d50ed);border-color:#8065ff;box-shadow:0 9px 30px #7559ff45}.stage{padding:16px;display:flex;flex-direction:column;gap:11px}.preview{min-height:560px;border-radius:16px;background:repeating-conic-gradient(#0e1117 0 25%,#0a0d12 0 50%) 0/24px 24px;display:flex;align-items:center;justify-content:center;overflow:hidden}.preview canvas{max-width:100%;max-height:68vh;border-radius:10px;box-shadow:0 25px 80px #000c}.empty{text-align:center;color:#737d8f;font-size:12px}.tools{display:flex;gap:7px;flex-wrap:wrap}.barwrap{height:9px;background:#090d13;border:1px solid #282f3b;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#6f51ef,#b7a5ff);transition:.12s}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.stat{background:#0a0e14;border:1px solid #252c38;border-radius:10px;padding:10px}.stat b{font-size:16px;display:block}.stat span{font-size:8px;color:var(--muted)}.notice{padding:10px;border:1px solid #284c3d;background:#0d1a16;color:#9fe1c0;border-radius:10px;font-size:9px;line-height:1.5;margin-top:12px}
-@media(max-width:850px){.app{grid-template-columns:1fr}.preview{min-height:420px}}@media(max-width:520px){.app{padding:0 8px}.choices{grid-template-columns:repeat(2,1fr)}.checks{grid-template-columns:1fr}.drop{height:240px}}
+:root{--bg:#090909;--panel:#111;--yellow:#ffd21c;--cream:#fff6cf;--muted:#a6a28f;--line:#29291f;--green:#b7ff45;--pink:#ff4fd8;--blue:#39a7ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:"Courier New",monospace;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.06;background:repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 4px)}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background-image:linear-gradient(90deg,transparent 49%,#ffd21c 50%,transparent 51%);background-size:32px 32px}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:40;background:rgba(9,9,9,.96)}
+.logo{font-weight:900;font-size:22px;letter-spacing:-2px}.logo b{color:var(--yellow)}.pixel-dot{display:inline-block;width:11px;height:11px;background:var(--yellow);margin-right:9px;box-shadow:4px 4px #705b00}
+.navlinks{display:flex;gap:30px;font-size:11px;color:#aaa791}.navlinks a:hover{color:var(--yellow)}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--yellow);color:#070707;padding:15px 18px;font-weight:900;border:2px solid #070707;box-shadow:6px 6px 0 #6e5900;transition:.12s}.btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #6e5900}.btn.dark{background:#111;color:var(--yellow);border-color:var(--yellow);box-shadow:6px 6px 0 var(--yellow)}
+.hero{min-height:780px;padding:70px 5vw 80px;display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;position:relative;background:radial-gradient(circle at 70% 40%,rgba(255,210,28,.12),transparent 35%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,210,28,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,210,28,.09) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(90deg,#000,transparent 85%)}
+.hero-copy{position:relative;z-index:2}.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--yellow);font-size:10px;font-weight:900;letter-spacing:2px}.kicker:before{content:"";width:25px;height:3px;background:var(--yellow)}
+h1{font-size:clamp(62px,9vw,138px);line-height:.78;letter-spacing:-9px;margin:28px 0 30px;text-shadow:8px 8px #25251c}h1 em{font-style:normal;color:var(--yellow)}.lead{max-width:590px;color:var(--muted);line-height:1.8;font-size:14px}.hero-actions{display:flex;gap:18px;margin-top:32px;flex-wrap:wrap}.numbers{display:flex;gap:42px;margin-top:55px}.numbers b{display:block;font-size:28px;color:var(--yellow)}.numbers span{font-size:9px;color:#777466;letter-spacing:1px}
+.hero-art{position:relative;z-index:2}.hero-art-frame{background:#111;border:5px solid var(--cream);padding:8px;box-shadow:20px 20px 0 var(--yellow),-12px -12px 0 #26261e;transform:rotate(1deg)}.hero-art-frame img{display:block;width:100%;aspect-ratio:1;object-fit:cover;image-rendering:auto}.stamp{position:absolute;background:#050505;color:var(--yellow);border:2px solid var(--yellow);padding:10px 12px;font-size:10px;font-weight:900;box-shadow:5px 5px 0 #000}.stamp.one{left:-20px;top:12%}.stamp.two{right:-18px;bottom:12%}
+.ticker{background:var(--yellow);color:#050505;border-block:3px solid #050505;overflow:hidden;white-space:nowrap;font-weight:900;padding:13px 0}.ticker span{display:inline-block;animation:scroll 25s linear infinite}.ticker b{padding:0 25px}@keyframes scroll{to{transform:translateX(-50%)}}
+.section{padding:110px 5vw}.eyebrow{color:var(--yellow);font-size:10px;letter-spacing:2px;font-weight:900}.manifesto{display:grid;grid-template-columns:1fr 1fr;gap:9vw;align-items:end}.big{font-size:clamp(50px,7vw,96px);line-height:.86;letter-spacing:-6px;margin:20px 0;text-shadow:6px 6px #22221b}.big em{font-style:normal;color:var(--yellow)}.manifesto p{color:var(--muted);line-height:1.8}.rules{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:35px}.rules div{padding:15px 0;border-bottom:1px solid var(--line);font-size:10px}
+.collection{background:#0d0d0c;border-block:2px solid var(--line)}.collection-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{background:#0b0b0a;color:#777466;border:1px solid #34342c;padding:9px 12px;font-size:9px;font-weight:900;cursor:pointer}.filter.active,.filter:hover{background:var(--yellow);color:#070707;border-color:var(--yellow)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#141412;border:2px solid #292922;cursor:pointer;position:relative;overflow:hidden;transition:.15s}.card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:8px 8px 0 var(--yellow)}.card img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.num{position:absolute;top:9px;left:9px;background:#050505;color:var(--yellow);border:1px solid var(--yellow);padding:7px 8px;font-size:9px;z-index:2}.meta{display:flex;justify-content:space-between;padding:11px 12px}.meta strong{font-size:10px}.meta small{font-size:8px;color:#777466}
+.banner{padding-top:30px}.banner img{width:100%;display:block;border:4px solid var(--yellow);box-shadow:12px 12px 0 #000;image-rendering:auto}
+.dna{background:var(--yellow);color:#080808;border:4px solid #050505;box-shadow:14px 14px 0 #000;display:grid;grid-template-columns:1fr 360px;gap:45px;padding:45px}.dna .eyebrow{color:#080808}.dna .big{color:#080808;text-shadow:5px 5px rgba(255,255,255,.35)}.dna .big em{color:#fff}.dna p{line-height:1.8;max-width:650px}.dna img{width:100%;height:100%;object-fit:cover;border:4px solid #050505}
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}.road{border:2px solid var(--line);background:#10100f;padding:28px;min-height:220px}.road b{font-size:42px;color:var(--yellow)}.road h3{font-size:14px;margin:20px 0 8px}.road p{font-size:12px;color:#888677;line-height:1.7}
+.final{min-height:480px;border:3px solid var(--yellow);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle,rgba(255,210,28,.16),transparent 40%);position:relative;overflow:hidden}.final:before{content:"";position:absolute;inset:-20%;background-image:linear-gradient(45deg,transparent 46%,rgba(255,210,28,.08) 47%,rgba(255,210,28,.08) 53%,transparent 54%);background-size:18px 18px;transform:rotate(10deg)}.final>*{position:relative}.final .big{font-size:clamp(60px,8vw,115px)}footer{border-top:2px solid var(--line);padding:30px 5vw;display:flex;justify-content:space-between;color:#716f63;font-size:9px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-card{width:min(1000px,95vw);background:#0f0f0e;border:3px solid var(--yellow);box-shadow:15px 15px #000;display:grid;grid-template-columns:1.1fr .9fr}.modal-img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.modal-info{padding:40px}.modal-info h3{font-size:42px;color:var(--yellow);margin:18px 0}.modal-info p{color:#aaa791;line-height:1.7}.close{position:fixed;right:25px;top:20px;width:45px;height:45px;border:2px solid #050505;background:var(--yellow);font-size:28px;cursor:pointer;font-weight:900}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-art{order:-1;max-width:600px;margin:auto}.manifesto{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}.dna{grid-template-columns:1fr}.dna img{max-width:420px}.roadmap-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
+@media(max-width:650px){.nav{padding:0 18px}.nav>.btn{display:none}.hero{padding:50px 20px}.hero h1{font-size:60px;letter-spacing:-5px}.section{padding:75px 20px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.collection-head{flex-direction:column;align-items:start}.manifesto .big,.roadmap .big{font-size:54px}.dna{padding:25px}.roadmap-grid{grid-template-columns:1fr}.modal-card{grid-template-columns:1fr;max-height:92vh;overflow:auto}.modal-info{padding:25px}.modal-info h3{font-size:30px}footer{flex-direction:column;gap:14px}.numbers{gap:20px}.hero-actions{flex-direction:column;align-items:start}}
 </style>
 </head>
 <body>
-<header><div class="logo">Random<span>NFT</span><b class="badge">NO API</b></div><button class="btn" onclick="location.reload()">Reset</button></header>
-<main class="app">
-<section class="panel">
-<div class="title">① Upload one image</div>
-<div id="drop" class="drop">🖼️<br><br><b>Upload your base image</b><br><span class="muted">PNG / JPG / WEBP · processed locally in your browser</span><input id="file" type="file" accept="image/*"></div>
-<div class="section">
-<div class="title">② Randomize</div>
-<div class="checks">
-<label class="check"><input id="bg" type="checkbox" checked> Background</label>
-<label class="check"><input id="hue" type="checkbox" checked> Colors</label>
-<label class="check"><input id="crop" type="checkbox" checked> Crop / Zoom</label>
-<label class="check"><input id="flip" type="checkbox" checked> Flip</label>
-<label class="check"><input id="rotate" type="checkbox" checked> Rotation</label>
-<label class="check"><input id="contrast" type="checkbox" checked> Contrast</label>
-<label class="check"><input id="mono" type="checkbox"> Monochrome</label>
-<label class="check"><input id="frame" type="checkbox" checked> Frame / glow</label>
-</div>
-</div>
-<div class="section">
-<div class="title">③ NFT quantity</div>
-<div class="choices">
-<button class="choice active" onclick="setQty(100,this)">100</button>
-<button class="choice" onclick="setQty(500,this)">500</button>
-<button class="choice" onclick="setQty(1000,this)">1,000</button>
-<button class="choice" onclick="setQty(10000,this)">10,000</button>
-</div>
-<label>Custom quantity</label><input id="qty" class="field" type="number" min="1" max="10000" value="100" oninput="clearChoices()">
-</div>
-<div class="section">
-<label>Collection name</label><input id="name" class="field" value="Random NFT Collection">
-<label>Output format</label><select id="format" class="field"><option value="png">PNG — best quality</option><option value="jpeg">JPG — smaller ZIP</option></select>
-<div class="notice">⚡ No AI, no API and no upload server. All variations are generated locally with Canvas. For truly different hats, eyes, clothes or character designs, separate transparent assets/layers are required.</div>
-</div>
-</section>
-<section class="stage">
-<div class="preview" id="preview"><div class="empty">Upload an image to start.</div></div>
-<div class="tools"><button class="btn" onclick="randomPreview()">🎲 Randomize Preview</button><button class="btn" onclick="downloadPreview()">⬇ Preview</button></div>
-<div class="stats"><div class="stat"><b id="count">100</b><span>NFTs</span></div><div class="stat"><b id="variants">∞</b><span>Possible visual variations</span></div><div class="stat"><b id="local">100%</b><span>Runs locally</span></div></div>
-<div class="barwrap"><div class="bar" id="bar"></div></div>
-<div class="muted" id="status">Ready. Nothing is generated until you click Download ZIP.</div>
-<button class="btn primary" style="padding:14px;width:100%;font-size:11px" onclick="generate()">✨ Generate NFTs & Download ZIP</button>
-</section>
-</main>
+<header class="nav"><a class="logo" href="#top"><span class="pixel-dot"></span>ANSEM<b>STORY</b></a><nav class="navlinks"><a href="#story">STORY</a><a href="#collection">COLLECTION</a><a href="#dna">CHARACTER</a><a href="#roadmap">ROADMAP</a></nav><a class="btn" href="#collection">ENTER WALL ↘</a></header>
+<main id="top">
+<section class="hero"><div class="hero-grid"></div><div class="hero-copy"><div class="kicker">PIXEL CHARACTER COLLECTION</div><h1>ONE FACE.<br><em>ENDLESS</em><br>STORIES.</h1><p class="lead">ANSEM STORY is a character-driven NFT collection where the face stays recognizable, while the fit, mood, activity and moment keep changing.</p><div class="hero-actions"><a class="btn" href="#collection">EXPLORE NFTs →</a><a class="btn dark" href="#story">READ STORY</a></div><div class="numbers"><div><b>050</b><span>ARTWORKS</span></div><div><b>01</b><span>CHARACTER</span></div><div><b>∞</b><span>MOMENTS</span></div></div></div><div class="hero-art"><div class="hero-art-frame"><img src="assets/043.png" alt="Ansem Story hero artwork"></div><div class="stamp one">ANSEM / ORIGINAL</div><div class="stamp two">NO REPEATS</div></div></section>
+<div class="ticker"><span>ANSEM STORY <b>✦</b> ONE FACE <b>✦</b> DIFFERENT MOMENT <b>✦</b> CLEAN COMPOSITION <b>✦</b> ONE OBJECT MAX <b>✦</b> NO REPEATS <b>✦</b> ANSEM STORY <b>✦</b> ONE FACE <b>✦</b> DIFFERENT MOMENT <b>✦</b> CLEAN COMPOSITION <b>✦</b> ONE OBJECT MAX <b>✦</b> NO REPEATS <b>✦</b></span></div>
+<section class="section manifesto" id="story"><div><div class="eyebrow">/ 001 — THE IDEA</div><div class="big">THE SAME<br><em>ANSEM.</em><br>NEVER THE<br>SAME DAY.</div></div><div><p>Every artwork starts from the same core character. The identity stays consistent so you instantly know it is Ansem.</p><p>Then everything else can move: outfit, expression, activity, pose and color. The composition stays clean — character first, one object at most.</p><div class="rules"><div>01 / CONSISTENT FACE</div><div>02 / NEW OUTFIT</div><div>03 / NEW ACTIVITY</div><div>04 / SOLID BACKGROUND</div></div></div></section>
+<section class="section collection" id="collection"><div class="collection-head"><div><div class="eyebrow">/ 002 — THE COLLECTION</div><div class="big">THE MOMENT<br><em>WALL.</em></div></div><div class="filters"><button class="filter active" data-filter="all">ALL</button><button class="filter" data-filter="sport">SPORT</button><button class="filter" data-filter="street">STREET</button><button class="filter" data-filter="chill">CHILL</button><button class="filter" data-filter="fun">FUN</button></div></div><div class="grid" id="grid"></div></section>
+<section class="section banner"><div class="eyebrow">/ 003 — THE WORLD</div><div style="height:20px"></div><img src="assets/banner.png" alt="ANSEM STORY banner"></section>
+<section class="section" id="dna"><div class="dna"><div><div class="eyebrow">/ 004 — CHARACTER DNA</div><div class="big">BUILT TO BE<br><em>RECOGNIZED.</em></div><p>The face, curls and goatee are the anchor. The rest is allowed to evolve. This creates a collection that feels varied without losing its character.</p><div class="rules"><div>FACE / LOCKED</div><div>STYLE / FLEXIBLE</div><div>ACTIVITY / UNIQUE</div><div>OBJECT / MAX 01</div></div></div><img src="assets/001.png" alt="Ansem character"></div></section>
+<section class="section" id="roadmap"><div class="eyebrow">/ 005 — ROADMAP</div><div class="big">THE STORY<br>KEEPS <em>GOING.</em></div><div class="roadmap-grid"><article class="road"><b>01</b><h3>THE FIRST WALL</h3><p>Launch the core collection with clean, recognizable Ansem moments.</p></article><article class="road"><b>02</b><h3>NEW CHAPTERS</h3><p>Expand the wardrobe, activities and special editions while keeping the identity locked.</p></article><article class="road"><b>03</b><h3>COMMUNITY MOMENTS</h3><p>Turn community ideas into future outfits, moods and story moments.</p></article></div></section>
+<section class="section"><div class="final"><div class="eyebrow">ANSEM STORY</div><div class="big">COLLECT THE<br><em>MOMENTS.</em></div><a class="btn" href="#collection">ENTER THE WALL →</a></div></section>
+</main><footer><div class="logo">ANSEM<b>STORY</b></div><div>ONE FACE. ENDLESS STORIES.</div><div>© 2026</div></footer>
+<div class="modal" id="modal"><button class="close" id="close">×</button><div class="modal-card"><div><img id="modalImg" class="modal-img" alt=""></div><div class="modal-info"><div class="eyebrow">ANSEM STORY / MOMENT</div><h3 id="modalTitle">#001</h3><p id="modalDesc">A unique Ansem moment.</p><div class="rules"><div>CHARACTER / ANSEM</div><div>STYLE / UNIQUE</div><div>OBJECT / MAX 01</div><div>BACKGROUND / SOLID</div></div></div></div></div>
 <script>
-const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d',{willReadFrequently:true});
-canvas.width=1024;canvas.height=1024;
-let img=null,src=null,currentSeed=12345;
-const file=document.getElementById('file'),drop=document.getElementById('drop');
-drop.onclick=e=>{if(e.target!==file)file.click()};
-file.onchange=e=>e.target.files[0]&&load(e.target.files[0]);
-['dragenter','dragover'].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.classList.add('drag')}));
-['dragleave','drop'].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.classList.remove('drag')}));
-drop.addEventListener('drop',e=>e.dataTransfer.files[0]&&load(e.dataTransfer.files[0]));
-function load(f){let u=URL.createObjectURL(f);let im=new Image();im.onload=()=>{img=im;src=u;drop.innerHTML='<img src="'+u+'">';randomPreview();status('Image loaded. Ready.');};im.src=u}
-function setQty(n,b){qty.value=n;document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');count.textContent=n}
-function clearChoices(){document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));count.textContent=Math.min(10000,Math.max(1,+qty.value||1))}
-function status(s){document.getElementById('status').textContent=s}
-function rng(seed){let x=seed>>>0;return()=>{x=(Math.imul(1664525,x)+1013904223)>>>0;return x/4294967296}}
-function randColor(r){return `hsl(${Math.floor(r()*360)},${55+Math.floor(r()*35)}%,${15+Math.floor(r()*35)}%)`}
-function drawVariation(seed){
- if(!img)return;
- let r=rng(seed), W=1024,H=1024;
- ctx.clearRect(0,0,W,H);
- if(bg.checked){let c1=randColor(r),c2=randColor(r);let g=ctx.createLinearGradient(r()*W,0,W*r(),H);g.addColorStop(0,c1);g.addColorStop(1,c2);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}else{ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H)}
- let zoom=crop.checked?1+(r()*.22):1,rot=rotate.checked?(r()-.5)*.10:0,flip=flip.checked&&r()>.5?-1:1;
- let hue=hue.checked?Math.floor(r()*360):0, sat=70+Math.floor(r()*60), bright=80+Math.floor(r()*45), cont=contrast.checked?70+Math.floor(r()*80):100;
- ctx.save();ctx.translate(W/2,H/2);ctx.rotate(rot);ctx.scale(flip*zoom,zoom);
- ctx.filter=`hue-rotate(${hue}deg) saturate(${sat}%) brightness(${bright}%) contrast(${cont}%) ${mono.checked?'grayscale(100%)':''}`;
- let ratio=Math.max(W/img.width,H/img.height),dw=img.width*ratio,dh=img.height*ratio;
- ctx.drawImage(img,-dw/2,-dh/2,dw,dh);ctx.restore();
- if(frame.checked){let glow=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*.25,W/2,H/2,Math.min(W,H)*.7);glow.addColorStop(0,'transparent');glow.addColorStop(.78,'transparent');glow.addColorStop(1,randColor(r));ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);ctx.lineWidth=10+r()*25;ctx.strokeStyle=randColor(r);ctx.strokeRect(15,15,W-30,H-30)}
- return new Promise(res=>canvas.toBlob(res,format.value==='jpeg'?'image/jpeg':'image/png',.92))
-}
-function randomPreview(){if(!img){status('Upload an image first.');return}currentSeed=Math.floor(Math.random()*4294967295);drawVariation(currentSeed).then(b=>{preview.innerHTML='';let im=document.createElement('img');im.src=URL.createObjectURL(b);preview.appendChild(im);status('Random preview generated locally.');})}
-function downloadPreview(){if(!img)return;drawVariation(currentSeed).then(b=>{let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='nft-preview.'+format.value;a.click()})}
-async function generate(){
- if(!img){status('Upload an image first.');return}
- let q=Math.min(10000,Math.max(1,+qty.value||1));qty.value=q;count.textContent=q;
- status('Generating '+q+' unique deterministic variations locally…');bar.style.width='0%';
- let zip=new JSZip();let folder=zip.folder('images');let meta=zip.folder('metadata');
- // Deterministic seeds make the collection reproducible for this browser session.
- let master=Math.floor(Math.random()*4294967295),seen=new Set();
- for(let i=1;i<=q;i++){
-   let seed=(master+i*2654435761)>>>0;
-   while(seen.has(seed))seed=(seed+1)>>>0;seen.add(seed);
-   let blob=await drawVariation(seed),ext=format.value;
-   folder.file(`${i}.${ext}`,blob);
-   meta.file(`${i}.json`,JSON.stringify({name:`${name.value} #${i}`,description:'Locally generated randomized NFT variation',image:`images/${i}.${ext}`,attributes:[{trait_type:'Generation','value':'Local Randomizer'},{trait_type:'Seed','value':String(seed)}]},null,2));
-   if(i%5===0||i===q){bar.style.width=(i/q*100).toFixed(2)+'%';status(`Generating ${i.toLocaleString()} / ${q.toLocaleString()}…`);await new Promise(requestAnimationFrame)}
- }
- zip.file('collection.json',JSON.stringify({name:name.value,supply:q,generator:'RandomNFT No API',created_at:new Date().toISOString()},null,2));
- status('Compressing ZIP…');
- let out=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}},m=>{bar.style.width=(100*(q/(q+1))+m.percent/(q+1)).toFixed(2)+'%'});
- let a=document.createElement('a');a.href=URL.createObjectURL(out);a.download=name.value.replace(/[^a-z0-9-_]+/gi,'-')+'.zip';a.click();
- bar.style.width='100%';status(`Done — ${q.toLocaleString()} images + metadata downloaded.`);
-}
-</script>
-</body></html>
+const grid=document.getElementById('grid');const modal=document.getElementById('modal');const modalImg=document.getElementById('modalImg');const modalTitle=document.getElementById('modalTitle');
+const cats=['sport','street','chill','fun'];
+function cat(i){return cats[i%4]}
+function render(filter='all'){grid.innerHTML='';for(let i=1;i<=50;i++){let c=cat(i-1);if(filter!=='all'&&c!==filter)continue;let n=String(i).padStart(3,'0');let el=document.createElement('article');el.className='card';el.innerHTML='<span class="num">#'+n+'</span><img loading="lazy" src="assets/'+n+'.png" alt="ANSEM STORY #'+n+'"><div class="meta"><strong>ANSEM #'+n+'</strong><small>'+c.toUpperCase()+'</small></div>';el.onclick=()=>{modalImg.src='assets/'+n+'.png';modalTitle.textContent='ANSEM #'+n;modal.classList.add('open')};grid.appendChild(el)}}
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.filter)});document.getElementById('close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});render();
+</script></body></html>
