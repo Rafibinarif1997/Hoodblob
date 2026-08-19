@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ANSEM STORY — Pixel Character Collection</title>
-<link rel="preload" as="image" href="./044.png"><link rel="preload" as="image" href="./051.png">
+<link rel="preload" as="image" href="./044.png"><link rel="preload" as="image" href="./050.png">
 <meta name="description" content="ANSEM STORY — one face, endless stories.">
 <style>
 :root{--bg:#090909;--panel:#111;--yellow:#ffd21c;--cream:#fff6cf;--muted:#a6a28f;--line:#29291f;--green:#b7ff45;--pink:#ff4fd8;--blue:#39a7ff}
@@ -64,7 +64,7 @@ h1{font-size:clamp(62px,9vw,138px);line-height:.78;letter-spacing:-9px;margin:28
         <div class="hero-slide"><img src="./044.png" alt="ANSEM STORY #044"></div>
         <div class="hero-slide"><img src="./045.png" alt="ANSEM STORY #045"></div>
         <div class="hero-slide"><img src="./050.png" alt="ANSEM STORY #050"></div>
-        <div class="hero-slide"><img src="./051.png" alt="ANSEM STORY #051"></div>
+        <div class="hero-slide"><img src="./050.png" alt="ANSEM STORY #051"></div>
       </div>
       <button class="hero-arrow prev" id="heroPrev" aria-label="Previous artwork">‹</button>
       <button class="hero-arrow next" id="heroNext" aria-label="Next artwork">›</button>
@@ -91,7 +91,7 @@ h1{font-size:clamp(62px,9vw,138px);line-height:.78;letter-spacing:-9px;margin:28
 <div class="modal" id="modal"><button class="close" id="close">×</button><div class="modal-card"><div><img id="modalImg" class="modal-img" alt=""></div><div class="modal-info"><div class="eyebrow">ANSEM STORY / MOMENT</div><h3 id="modalTitle">#001</h3><p id="modalDesc">A unique Ansem moment.</p><div class="rules"><div>CHARACTER / ANSEM</div><div>STYLE / UNIQUE</div><div>BACKGROUND / SOLID</div></div></div></div></div>
 <script>
 const grid=document.getElementById('grid');const modal=document.getElementById('modal');const modalImg=document.getElementById('modalImg');const modalTitle=document.getElementById('modalTitle');
-function render(){grid.innerHTML='';for(let i=1;i<=51;i++){let n=String(i).padStart(3,'0');let el=document.createElement('article');el.className='card';el.innerHTML='<span class="num">#'+n+'</span><img loading="lazy" src="./'+n+'.png" alt="ANSEM STORY #'+n+'"><div class="meta"><strong>ANSEM #'+n+'</strong><small>ANSEM STORY</small></div>';let img=el.querySelector('img');img.onerror=()=>{img.style.visibility='hidden'};el.onclick=()=>{modalImg.src='./'+n+'.png';modalTitle.textContent='ANSEM #'+n;modal.classList.add('open')};grid.appendChild(el)}}
+function render(){grid.innerHTML='';for(let i=1;i<=50;i++){let n=String(i).padStart(3,'0');let el=document.createElement('article');el.className='card';el.innerHTML='<span class="num">#'+n+'</span><img loading="lazy" src="./'+n+'.png" alt="ANSEM STORY #'+n+'"><div class="meta"><strong>ANSEM #'+n+'</strong><small>ANSEM STORY</small></div>';let img=el.querySelector('img');img.onerror=()=>{img.style.visibility='hidden'};el.onclick=()=>{modalImg.src='./'+n+'.png';modalTitle.textContent='ANSEM #'+n;modal.classList.add('open')};grid.appendChild(el)}}
 document.getElementById('close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});render();
 
 /* Hero swipe carousel */
