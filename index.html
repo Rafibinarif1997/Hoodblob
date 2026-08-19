@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ANSEM STORY — Pixel Character Collection</title>
+<link rel="preload" as="image" href="./044.png"><link rel="preload" as="image" href="./051.png">
 <meta name="description" content="ANSEM STORY — one face, endless stories.">
 <style>
 :root{--bg:#090909;--panel:#111;--yellow:#ffd21c;--cream:#fff6cf;--muted:#a6a28f;--line:#29291f;--green:#b7ff45;--pink:#ff4fd8;--blue:#39a7ff}
@@ -30,25 +31,72 @@ h1{font-size:clamp(62px,9vw,138px);line-height:.78;letter-spacing:-9px;margin:28
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-card{width:min(1000px,95vw);background:#0f0f0e;border:3px solid var(--yellow);box-shadow:15px 15px #000;display:grid;grid-template-columns:1.1fr .9fr}.modal-img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.modal-info{padding:40px}.modal-info h3{font-size:42px;color:var(--yellow);margin:18px 0}.modal-info p{color:#aaa791;line-height:1.7}.close{position:fixed;right:25px;top:20px;width:45px;height:45px;border:2px solid #050505;background:var(--yellow);font-size:28px;cursor:pointer;font-weight:900}
 @media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-art{order:-1;max-width:600px;margin:auto}.manifesto{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}.dna{grid-template-columns:1fr}.dna img{max-width:420px}.roadmap-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
 @media(max-width:650px){.nav{padding:0 18px}.nav>.btn{display:none}.hero{padding:50px 20px}.hero h1{font-size:60px;letter-spacing:-5px}.section{padding:75px 20px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.collection-head{flex-direction:column;align-items:start}.manifesto .big,.roadmap .big{font-size:54px}.dna{padding:25px}.roadmap-grid{grid-template-columns:1fr}.modal-card{grid-template-columns:1fr;max-height:92vh;overflow:auto}.modal-info{padding:25px}.modal-info h3{font-size:30px}footer{flex-direction:column;gap:14px}.numbers{gap:20px}.hero-actions{flex-direction:column;align-items:start}}
+
+/* ANSEM STORY targeted updates */
+.logo{display:inline-flex;align-items:center;gap:9px}
+.logo-img{width:34px;height:34px;object-fit:cover;image-rendering:auto;border:2px solid var(--yellow);box-shadow:4px 4px 0 #705b00}
+.hero-art{touch-action:pan-y}
+.hero-slider{position:relative;width:100%;overflow:hidden}
+.hero-track{display:flex;transition:transform .35s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hero-slide{min-width:100%;padding:0}
+.hero-slide img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border:2px solid var(--yellow);background:#050505;color:var(--yellow);font-weight:900;font-size:22px;cursor:pointer;box-shadow:5px 5px 0 #000}
+.hero-arrow.prev{left:12px}.hero-arrow.next{right:12px}
+.hero-dots{display:flex;justify-content:center;gap:7px;margin-top:13px}
+.hero-dot{width:9px;height:9px;padding:0;border:1px solid var(--yellow);background:#111;cursor:pointer}
+.hero-dot.active{background:var(--yellow)}
+@media(max-width:650px){
+  .logo-img{width:30px;height:30px}
+  .hero-arrow{width:38px;height:38px}
+}
+
+.twitter-link{color:var(--yellow);font-weight:900}.twitter-link:hover{color:var(--cream)}
 </style>
 </head>
 <body>
-<header class="nav"><a class="logo" href="#top"><span class="pixel-dot"></span>ANSEM<b>STORY</b></a><nav class="navlinks"><a href="#story">STORY</a><a href="#collection">COLLECTION</a><a href="#dna">CHARACTER</a><a href="#roadmap">ROADMAP</a></nav><a class="btn" href="#collection">ENTER WALL ↘</a></header>
+<header class="nav"><a class="logo" href="#top"><img class="logo-img" src="./001.png" alt="ANSEM STORY logo">ANSEM<b>STORY</b></a><nav class="navlinks"><a href="#story">STORY</a><a href="#collection">COLLECTION</a><a href="#dna">CHARACTER</a><a href="#roadmap">ROADMAP</a></nav><a class="btn" href="#collection">ENTER WALL ↘</a></header>
 <main id="top">
-<section class="hero"><div class="hero-grid"></div><div class="hero-copy"><div class="kicker">PIXEL CHARACTER COLLECTION</div><h1>ONE FACE.<br><em>ENDLESS</em><br>STORIES.</h1><p class="lead">ANSEM STORY is a character-driven NFT collection where the face stays recognizable, while the fit, mood, activity and moment keep changing.</p><div class="hero-actions"><a class="btn" href="#collection">EXPLORE NFTs →</a><a class="btn dark" href="#story">READ STORY</a></div><div class="numbers"><div><b>051</b><span>ARTWORKS</span></div><div><b>01</b><span>CHARACTER</span></div><div><b>∞</b><span>MOMENTS</span></div></div></div><div class="hero-art"><div class="hero-art-frame"><img src="./043.png" alt="Ansem Story hero artwork"></div><div class="stamp one">ANSEM / ORIGINAL</div><div class="stamp two">NO REPEATS</div></div></section>
+<section class="hero"><div class="hero-grid"></div><div class="hero-copy"><h1>ONE FACE.<br><em>ENDLESS</em><br>STORIES.</h1><p class="lead">ANSEM STORY is a character-driven NFT collection where the face stays recognizable, while the fit, mood, activity and moment keep changing.</p><div class="hero-actions"><a class="btn" href="#collection">EXPLORE NFTs →</a><a class="btn dark" href="#story">READ STORY</a></div><div class="numbers"><div><b>TBD</b><span>ARTWORKS</span></div><div><b>01</b><span>CHARACTER</span></div><div><b>∞</b><span>MOMENTS</span></div></div></div><div class="hero-art">
+  <div class="hero-art-frame">
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-track" id="heroTrack">
+        <div class="hero-slide"><img src="./043.png" alt="ANSEM STORY #043"></div>
+        <div class="hero-slide"><img src="./044.png" alt="ANSEM STORY #044"></div>
+        <div class="hero-slide"><img src="./045.png" alt="ANSEM STORY #045"></div>
+        <div class="hero-slide"><img src="./050.png" alt="ANSEM STORY #050"></div>
+        <div class="hero-slide"><img src="./051.png" alt="ANSEM STORY #051"></div>
+      </div>
+      <button class="hero-arrow prev" id="heroPrev" aria-label="Previous artwork">‹</button>
+      <button class="hero-arrow next" id="heroNext" aria-label="Next artwork">›</button>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" data-slide="0" aria-label="Artwork 1"></button>
+      <button class="hero-dot" data-slide="1" aria-label="Artwork 2"></button>
+      <button class="hero-dot" data-slide="2" aria-label="Artwork 3"></button>
+      <button class="hero-dot" data-slide="3" aria-label="Artwork 4"></button>
+      <button class="hero-dot" data-slide="4" aria-label="Artwork 5"></button>
+    </div>
+  </div>
+  <div class="stamp one">ANSEM / ORIGINAL</div>
+  <div class="stamp two">NO REPEATS</div>
+</div></section>
 <div class="ticker"><span>ANSEM STORY <b>✦</b> ONE FACE <b>✦</b> DIFFERENT MOMENT <b>✦</b> CLEAN COMPOSITION <b>✦</b> ONE OBJECT MAX <b>✦</b> NO REPEATS <b>✦</b> ANSEM STORY <b>✦</b> ONE FACE <b>✦</b> DIFFERENT MOMENT <b>✦</b> CLEAN COMPOSITION <b>✦</b> ONE OBJECT MAX <b>✦</b> NO REPEATS <b>✦</b></span></div>
-<section class="section manifesto" id="story"><div><div class="eyebrow">/ 001 — THE IDEA</div><div class="big">THE SAME<br><em>ANSEM.</em><br>NEVER THE<br>SAME DAY.</div></div><div><p>Every artwork starts from the same core character. The identity stays consistent so you instantly know it is Ansem.</p><p>Then everything else can move: outfit, expression, activity, pose and color. The composition stays clean — character first, one object at most.</p><div class="rules"><div>01 / CONSISTENT FACE</div><div>02 / NEW OUTFIT</div><div>03 / NEW ACTIVITY</div><div>04 / SOLID BACKGROUND</div></div></div></section>
-<section class="section collection" id="collection"><div class="collection-head"><div><div class="eyebrow">/ 002 — THE COLLECTION</div><div class="big">THE MOMENT<br><em>WALL.</em></div></div><div class="filters"><button class="filter active" data-filter="all">ALL</button><button class="filter" data-filter="sport">SPORT</button><button class="filter" data-filter="street">STREET</button><button class="filter" data-filter="chill">CHILL</button><button class="filter" data-filter="fun">FUN</button></div></div><div class="grid" id="grid"></div></section>
+<section class="section manifesto" id="story"><div><div class="eyebrow">/ 001 — THE IDEA</div><div class="big">THE SAME<br><em>ANSEM.</em><br>NEVER THE<br>SAME DAY.</div></div><div><p>Every artwork starts from the same core character. The identity stays consistent so you instantly know it is Ansem.</p><p>Then everything else can move: outfit, expression, activity, pose and color. The composition stays clean — character first, a clean, focused composition.</p><div class="rules"><div>01 / CONSISTENT FACE</div><div>02 / NEW OUTFIT</div><div>03 / NEW ACTIVITY</div><div>04 / SOLID BACKGROUND</div></div></div></section>
+<section class="section collection" id="collection"><div class="collection-head"><div><div class="eyebrow">/ 002 — THE COLLECTION</div><div class="big">THE MOMENT<br><em>WALL.</em></div></div></div><div class="grid" id="grid"></div></section>
 <section class="section banner"><div class="eyebrow">/ 003 — THE WORLD</div><div style="height:20px"></div><img src="./banner.png" alt="ANSEM STORY banner"></section>
-<section class="section" id="dna"><div class="dna"><div><div class="eyebrow">/ 004 — CHARACTER DNA</div><div class="big">BUILT TO BE<br><em>RECOGNIZED.</em></div><p>The face, curls and goatee are the anchor. The rest is allowed to evolve. This creates a collection that feels varied without losing its character.</p><div class="rules"><div>FACE / LOCKED</div><div>STYLE / FLEXIBLE</div><div>ACTIVITY / UNIQUE</div><div>OBJECT / MAX 01</div></div></div><img src="./001.png" alt="Ansem character"></div></section>
+<section class="section" id="dna"><div class="dna"><div><div class="eyebrow">/ 004 — CHARACTER DNA</div><div class="big">BUILT TO BE<br><em>RECOGNIZED.</em></div><p>The face, curls and goatee are the anchor. The rest is allowed to evolve. This creates a collection that feels varied without losing its character.</p><div class="rules"><div>FACE / LOCKED</div><div>STYLE / FLEXIBLE</div><div>ACTIVITY / UNIQUE</div></div></div><img src="./001.png" alt="Ansem character"></div></section>
 <section class="section" id="roadmap"><div class="eyebrow">/ 005 — ROADMAP</div><div class="big">THE STORY<br>KEEPS <em>GOING.</em></div><div class="roadmap-grid"><article class="road"><b>01</b><h3>THE FIRST WALL</h3><p>Launch the core collection with clean, recognizable Ansem moments.</p></article><article class="road"><b>02</b><h3>NEW CHAPTERS</h3><p>Expand the wardrobe, activities and special editions while keeping the identity locked.</p></article><article class="road"><b>03</b><h3>COMMUNITY MOMENTS</h3><p>Turn community ideas into future outfits, moods and story moments.</p></article></div></section>
 <section class="section"><div class="final"><div class="eyebrow">ANSEM STORY</div><div class="big">COLLECT THE<br><em>MOMENTS.</em></div><a class="btn" href="#collection">ENTER THE WALL →</a></div></section>
-</main><footer><div class="logo">ANSEM<b>STORY</b></div><div>ONE FACE. ENDLESS STORIES.</div><div>© 2026</div></footer>
-<div class="modal" id="modal"><button class="close" id="close">×</button><div class="modal-card"><div><img id="modalImg" class="modal-img" alt=""></div><div class="modal-info"><div class="eyebrow">ANSEM STORY / MOMENT</div><h3 id="modalTitle">#001</h3><p id="modalDesc">A unique Ansem moment.</p><div class="rules"><div>CHARACTER / ANSEM</div><div>STYLE / UNIQUE</div><div>OBJECT / MAX 01</div><div>BACKGROUND / SOLID</div></div></div></div></div>
+</main><footer><div class="logo"><img class="logo-img" src="./001.png" alt="ANSEM STORY logo">ANSEM<b>STORY</b></div><div>ONE FACE. ENDLESS STORIES.</div><div>© 2026</div><a href="https://x.com/ansemstory" target="_blank" rel="noopener noreferrer" class="twitter-link">X / @ANSEMSTORY ↗</a></footer>
+<div class="modal" id="modal"><button class="close" id="close">×</button><div class="modal-card"><div><img id="modalImg" class="modal-img" alt=""></div><div class="modal-info"><div class="eyebrow">ANSEM STORY / MOMENT</div><h3 id="modalTitle">#001</h3><p id="modalDesc">A unique Ansem moment.</p><div class="rules"><div>CHARACTER / ANSEM</div><div>STYLE / UNIQUE</div><div>BACKGROUND / SOLID</div></div></div></div></div>
 <script>
 const grid=document.getElementById('grid');const modal=document.getElementById('modal');const modalImg=document.getElementById('modalImg');const modalTitle=document.getElementById('modalTitle');
-const cats=['sport','street','chill','fun'];
-function cat(i){return cats[i%4]}
-function render(filter='all'){grid.innerHTML='';for(let i=1;i<=51;i++){let c=cat(i-1);if(filter!=='all'&&c!==filter)continue;let n=String(i).padStart(3,'0');let el=document.createElement('article');el.className='card';el.innerHTML='<span class="num">#'+n+'</span><img loading="lazy" src="./'+n+'.png" alt="ANSEM STORY #'+n+'"><div class="meta"><strong>ANSEM #'+n+'</strong><small>'+c.toUpperCase()+'</small></div>';el.onclick=()=>{modalImg.src='./'+n+'.png';modalTitle.textContent='ANSEM #'+n;modal.classList.add('open')};grid.appendChild(el)}}
-document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.filter)});document.getElementById('close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});render();
+function render(){grid.innerHTML='';for(let i=1;i<=51;i++){let n=String(i).padStart(3,'0');let el=document.createElement('article');el.className='card';el.innerHTML='<span class="num">#'+n+'</span><img loading="lazy" src="./'+n+'.png" alt="ANSEM STORY #'+n+'"><div class="meta"><strong>ANSEM #'+n+'</strong><small>ANSEM STORY</small></div>';let img=el.querySelector('img');img.onerror=()=>{img.style.visibility='hidden'};el.onclick=()=>{modalImg.src='./'+n+'.png';modalTitle.textContent='ANSEM #'+n;modal.classList.add('open')};grid.appendChild(el)}}
+document.getElementById('close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});render();
+
+/* Hero swipe carousel */
+const heroTrack=document.getElementById('heroTrack');const heroDots=[...document.querySelectorAll('.hero-dot')];let heroIndex=0;let heroStartX=0;let heroDeltaX=0;
+function heroGo(i){heroIndex=(i+5)%5;heroTrack.style.transform='translateX(-'+(heroIndex*100)+'%)';heroDots.forEach((d,k)=>d.classList.toggle('active',k===heroIndex))}
+document.getElementById('heroPrev').onclick=()=>heroGo(heroIndex-1);document.getElementById('heroNext').onclick=()=>heroGo(heroIndex+1);heroDots.forEach(d=>d.onclick=()=>heroGo(Number(d.dataset.slide)));
+const heroSlider=document.getElementById('heroSlider');heroSlider.addEventListener('touchstart',e=>{heroStartX=e.touches[0].clientX;heroDeltaX=0},{passive:true});heroSlider.addEventListener('touchmove',e=>{heroDeltaX=e.touches[0].clientX-heroStartX},{passive:true});heroSlider.addEventListener('touchend',()=>{if(Math.abs(heroDeltaX)>45)heroGo(heroIndex+(heroDeltaX<0?1:-1))});
 </script></body></html>
