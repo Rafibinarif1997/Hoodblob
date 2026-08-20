@@ -1,102 +1,961 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ANSEM STORY — Pixel Character Collection</title>
-<link rel="preload" as="image" href="./044.png"><link rel="preload" as="image" href="./050.png">
-<meta name="description" content="ANSEM STORY — one face, endless stories.">
-<style>
-:root{--bg:#090909;--panel:#111;--yellow:#ffd21c;--cream:#fff6cf;--muted:#a6a28f;--line:#29291f;--green:#b7ff45;--pink:#ff4fd8;--blue:#39a7ff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:"Courier New",monospace;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.06;background:repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 4px)}
-body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background-image:linear-gradient(90deg,transparent 49%,#ffd21c 50%,transparent 51%);background-size:32px 32px}
-.nav{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:40;background:rgba(9,9,9,.96)}
-.logo{font-weight:900;font-size:22px;letter-spacing:-2px}.logo b{color:var(--yellow)}.pixel-dot{display:inline-block;width:11px;height:11px;background:var(--yellow);margin-right:9px;box-shadow:4px 4px #705b00}
-.navlinks{display:flex;gap:30px;font-size:11px;color:#aaa791}.navlinks a:hover{color:var(--yellow)}
-.btn{display:inline-flex;align-items:center;gap:12px;background:var(--yellow);color:#070707;padding:15px 18px;font-weight:900;border:2px solid #070707;box-shadow:6px 6px 0 #6e5900;transition:.12s}.btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #6e5900}.btn.dark{background:#111;color:var(--yellow);border-color:var(--yellow);box-shadow:6px 6px 0 var(--yellow)}
-.hero{min-height:780px;padding:70px 5vw 80px;display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;position:relative;background:radial-gradient(circle at 70% 40%,rgba(255,210,28,.12),transparent 35%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,210,28,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,210,28,.09) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(90deg,#000,transparent 85%)}
-.hero-copy{position:relative;z-index:2}.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--yellow);font-size:10px;font-weight:900;letter-spacing:2px}.kicker:before{content:"";width:25px;height:3px;background:var(--yellow)}
-h1{font-size:clamp(62px,9vw,138px);line-height:.78;letter-spacing:-9px;margin:28px 0 30px;text-shadow:8px 8px #25251c}h1 em{font-style:normal;color:var(--yellow)}.lead{max-width:590px;color:var(--muted);line-height:1.8;font-size:14px}.hero-actions{display:flex;gap:18px;margin-top:32px;flex-wrap:wrap}.numbers{display:flex;gap:42px;margin-top:55px}.numbers b{display:block;font-size:28px;color:var(--yellow)}.numbers span{font-size:9px;color:#777466;letter-spacing:1px}
-.hero-art{position:relative;z-index:2}.hero-art-frame{background:#111;border:5px solid var(--cream);padding:8px;box-shadow:20px 20px 0 var(--yellow),-12px -12px 0 #26261e;transform:rotate(1deg)}.hero-art-frame img{display:block;width:100%;aspect-ratio:1;object-fit:cover;image-rendering:auto}.stamp{position:absolute;background:#050505;color:var(--yellow);border:2px solid var(--yellow);padding:10px 12px;font-size:10px;font-weight:900;box-shadow:5px 5px 0 #000}.stamp.one{left:-20px;top:12%}.stamp.two{right:-18px;bottom:12%}
-.ticker{background:var(--yellow);color:#050505;border-block:3px solid #050505;overflow:hidden;white-space:nowrap;font-weight:900;padding:13px 0}.ticker span{display:inline-block;animation:scroll 25s linear infinite}.ticker b{padding:0 25px}@keyframes scroll{to{transform:translateX(-50%)}}
-.section{padding:110px 5vw}.eyebrow{color:var(--yellow);font-size:10px;letter-spacing:2px;font-weight:900}.manifesto{display:grid;grid-template-columns:1fr 1fr;gap:9vw;align-items:end}.big{font-size:clamp(50px,7vw,96px);line-height:.86;letter-spacing:-6px;margin:20px 0;text-shadow:6px 6px #22221b}.big em{font-style:normal;color:var(--yellow)}.manifesto p{color:var(--muted);line-height:1.8}.rules{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:35px}.rules div{padding:15px 0;border-bottom:1px solid var(--line);font-size:10px}
-.collection{background:#0d0d0c;border-block:2px solid var(--line)}.collection-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{background:#0b0b0a;color:#777466;border:1px solid #34342c;padding:9px 12px;font-size:9px;font-weight:900;cursor:pointer}.filter.active,.filter:hover{background:var(--yellow);color:#070707;border-color:var(--yellow)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#141412;border:2px solid #292922;cursor:pointer;position:relative;overflow:hidden;transition:.15s}.card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:8px 8px 0 var(--yellow)}.card img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.num{position:absolute;top:9px;left:9px;background:#050505;color:var(--yellow);border:1px solid var(--yellow);padding:7px 8px;font-size:9px;z-index:2}.meta{display:flex;justify-content:space-between;padding:11px 12px}.meta strong{font-size:10px}.meta small{font-size:8px;color:#777466}
-.banner{padding-top:30px}.banner img{width:100%;display:block;border:4px solid var(--yellow);box-shadow:12px 12px 0 #000;image-rendering:auto}
-.dna{background:var(--yellow);color:#080808;border:4px solid #050505;box-shadow:14px 14px 0 #000;display:grid;grid-template-columns:1fr 360px;gap:45px;padding:45px}.dna .eyebrow{color:#080808}.dna .big{color:#080808;text-shadow:5px 5px rgba(255,255,255,.35)}.dna .big em{color:#fff}.dna p{line-height:1.8;max-width:650px}.dna img{width:100%;height:100%;object-fit:cover;border:4px solid #050505}
-.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}.road{border:2px solid var(--line);background:#10100f;padding:28px;min-height:220px}.road b{font-size:42px;color:var(--yellow)}.road h3{font-size:14px;margin:20px 0 8px}.road p{font-size:12px;color:#888677;line-height:1.7}
-.final{min-height:480px;border:3px solid var(--yellow);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle,rgba(255,210,28,.16),transparent 40%);position:relative;overflow:hidden}.final:before{content:"";position:absolute;inset:-20%;background-image:linear-gradient(45deg,transparent 46%,rgba(255,210,28,.08) 47%,rgba(255,210,28,.08) 53%,transparent 54%);background-size:18px 18px;transform:rotate(10deg)}.final>*{position:relative}.final .big{font-size:clamp(60px,8vw,115px)}footer{border-top:2px solid var(--line);padding:30px 5vw;display:flex;justify-content:space-between;color:#716f63;font-size:9px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-card{width:min(1000px,95vw);background:#0f0f0e;border:3px solid var(--yellow);box-shadow:15px 15px #000;display:grid;grid-template-columns:1.1fr .9fr}.modal-img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.modal-info{padding:40px}.modal-info h3{font-size:42px;color:var(--yellow);margin:18px 0}.modal-info p{color:#aaa791;line-height:1.7}.close{position:fixed;right:25px;top:20px;width:45px;height:45px;border:2px solid #050505;background:var(--yellow);font-size:28px;cursor:pointer;font-weight:900}
-@media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-art{order:-1;max-width:600px;margin:auto}.manifesto{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}.dna{grid-template-columns:1fr}.dna img{max-width:420px}.roadmap-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
-@media(max-width:650px){.nav{padding:0 18px}.nav>.btn{display:none}.hero{padding:50px 20px}.hero h1{font-size:60px;letter-spacing:-5px}.section{padding:75px 20px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.collection-head{flex-direction:column;align-items:start}.manifesto .big,.roadmap .big{font-size:54px}.dna{padding:25px}.roadmap-grid{grid-template-columns:1fr}.modal-card{grid-template-columns:1fr;max-height:92vh;overflow:auto}.modal-info{padding:25px}.modal-info h3{font-size:30px}footer{flex-direction:column;gap:14px}.numbers{gap:20px}.hero-actions{flex-direction:column;align-items:start}}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* ANSEM STORY targeted updates */
-.logo{display:inline-flex;align-items:center;gap:9px}
-.logo-img{width:34px;height:34px;object-fit:cover;image-rendering:auto;border:2px solid var(--yellow);box-shadow:4px 4px 0 #705b00}
-.hero-art{touch-action:pan-y}
-.hero-slider{position:relative;width:100%;overflow:hidden}
-.hero-track{display:flex;transition:transform .35s cubic-bezier(.22,.61,.36,1);will-change:transform}
-.hero-slide{min-width:100%;padding:0}
-.hero-slide img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
-.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border:2px solid var(--yellow);background:#050505;color:var(--yellow);font-weight:900;font-size:22px;cursor:pointer;box-shadow:5px 5px 0 #000}
-.hero-arrow.prev{left:12px}.hero-arrow.next{right:12px}
-.hero-dots{display:flex;justify-content:center;gap:7px;margin-top:13px}
-.hero-dot{width:9px;height:9px;padding:0;border:1px solid var(--yellow);background:#111;cursor:pointer}
-.hero-dot.active{background:var(--yellow)}
-@media(max-width:650px){
-  .logo-img{width:30px;height:30px}
-  .hero-arrow{width:38px;height:38px}
+<title>Launchpad</title>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
+
+<style>
+
+*{
+    box-sizing:border-box;
 }
 
-.twitter-link{color:var(--yellow);font-weight:900}.twitter-link:hover{color:var(--cream)}
+body{
+    margin:0;
+    background:#050505;
+    color:#fff;
+    font-family:Inter,Arial,sans-serif;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:70px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+}
+
+button{
+    cursor:pointer;
+    border:0;
+    border-radius:12px;
+    padding:13px 20px;
+    font-weight:800;
+}
+
+.connect{
+    background:#fff;
+    color:#000;
+}
+
+.hero{
+    padding:40px 0 80px;
+}
+
+.hero h1{
+    font-size:clamp(48px,8vw,90px);
+    line-height:.95;
+    letter-spacing:-5px;
+    margin:0;
+}
+
+.hero p{
+    color:#999;
+    max-width:650px;
+    font-size:18px;
+    line-height:1.6;
+    margin:25px 0;
+}
+
+.card{
+    background:#101010;
+    border:1px solid #242424;
+    border-radius:22px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+label{
+    display:block;
+    color:#999;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    background:#070707;
+    border:1px solid #292929;
+    color:#fff;
+    border-radius:11px;
+    outline:none;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#fff;
+}
+
+.field{
+    margin-bottom:5px;
+}
+
+.section{
+    margin-bottom:25px;
+}
+
+.section h3{
+    margin-bottom:18px;
+}
+
+.launch{
+    width:100%;
+    background:#fff;
+    color:#000;
+    font-size:16px;
+    padding:17px;
+}
+
+.launch:hover{
+    opacity:.85;
+}
+
+.status{
+    margin-top:15px;
+    padding:14px;
+    background:#181818;
+    border-radius:10px;
+    color:#aaa;
+    word-break:break-word;
+}
+
+.protection{
+    background:#0b0b0b;
+    border:1px solid #252525;
+    padding:18px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+.protection strong{
+    color:#fff;
+}
+
+.wallets{
+    display:flex;
+    gap:10px;
+}
+
+.wallets button{
+    background:#222;
+    color:#fff;
+}
+
+footer{
+    padding:60px 0;
+    color:#555;
+    text-align:center;
+}
+
+@media(max-width:700px){
+
+    .container{
+        padding:16px;
+    }
+
+    nav{
+        margin-bottom:45px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .hero h1{
+        font-size:55px;
+        letter-spacing:-3px;
+    }
+
+}
+
 </style>
 </head>
-<body>
-<header class="nav"><a class="logo" href="#top"><img class="logo-img" src="./001.png" alt="ANSEM STORY logo">ANSEM<b>STORY</b></a><nav class="navlinks"><a href="#story">STORY</a><a href="#collection">COLLECTION</a><a href="#dna">CHARACTER</a><a href="#roadmap">ROADMAP</a></nav><a class="btn" href="#collection">ENTER WALL ↘</a></header>
-<main id="top">
-<section class="hero"><div class="hero-grid"></div><div class="hero-copy"><h1>ONE FACE.<br><em>ENDLESS</em><br>STORIES.</h1><p class="lead">ANSEM STORY is a character-driven NFT collection where the face stays recognizable, while the fit, mood, activity and moment keep changing.</p><div class="hero-actions"><a class="btn" href="#collection">EXPLORE NFTs →</a><a class="btn dark" href="#story">READ STORY</a></div><div class="numbers"><div><b>TBD</b><span>ARTWORKS</span></div><div><b>01</b><span>CHARACTER</span></div><div><b>∞</b><span>MOMENTS</span></div></div></div><div class="hero-art">
-  <div class="hero-art-frame">
-    <div class="hero-slider" id="heroSlider">
-      <div class="hero-track" id="heroTrack">
-        <div class="hero-slide"><img src="./043.png" alt="ANSEM STORY #043"></div>
-        <div class="hero-slide"><img src="./044.png" alt="ANSEM STORY #044"></div>
-        <div class="hero-slide"><img src="./045.png" alt="ANSEM STORY #045"></div>
-        <div class="hero-slide"><img src="./050.png" alt="ANSEM STORY #050"></div>
-        <div class="hero-slide"><img src="./050.png" alt="ANSEM STORY #051"></div>
-      </div>
-      <button class="hero-arrow prev" id="heroPrev" aria-label="Previous artwork">‹</button>
-      <button class="hero-arrow next" id="heroNext" aria-label="Next artwork">›</button>
-    </div>
-    <div class="hero-dots" id="heroDots">
-      <button class="hero-dot active" data-slide="0" aria-label="Artwork 1"></button>
-      <button class="hero-dot" data-slide="1" aria-label="Artwork 2"></button>
-      <button class="hero-dot" data-slide="2" aria-label="Artwork 3"></button>
-      <button class="hero-dot" data-slide="3" aria-label="Artwork 4"></button>
-      <button class="hero-dot" data-slide="4" aria-label="Artwork 5"></button>
-    </div>
-  </div>
-  <div class="stamp one">ANSEM / ORIGINAL</div>
-  <div class="stamp two">NO REPEATS</div>
-</div></section>
-<div class="ticker"><span>ANSEM STORY <b>✦</b> ONE FACE <b>✦</b> DIFFERENT MOMENT <b>✦</b> CLEAN COMPOSITION <b>✦</b> ONE OBJECT MAX <b>✦</b> NO REPEATS <b>✦</b> ANSEM STORY <b>✦</b> ONE FACE <b>✦</b> DIFFERENT MOMENT <b>✦</b> CLEAN COMPOSITION <b>✦</b> ONE OBJECT MAX <b>✦</b> NO REPEATS <b>✦</b></span></div>
-<section class="section manifesto" id="story"><div><div class="eyebrow">/ 001 — THE IDEA</div><div class="big">THE SAME<br><em>ANSEM.</em><br>NEVER THE<br>SAME DAY.</div></div><div><p>Every artwork starts from the same core character. The identity stays consistent so you instantly know it is Ansem.</p><p>Then everything else can move: outfit, expression, activity, pose and color. The composition stays clean — character first, a clean, focused composition.</p><div class="rules"><div>01 / CONSISTENT FACE</div><div>02 / NEW OUTFIT</div><div>03 / NEW ACTIVITY</div><div>04 / SOLID BACKGROUND</div></div></div></section>
-<section class="section collection" id="collection"><div class="collection-head"><div><div class="eyebrow">/ 002 — THE COLLECTION</div><div class="big">THE MOMENT<br><em>WALL.</em></div></div></div><div class="grid" id="grid"></div></section>
-<section class="section banner"><div class="eyebrow">/ 003 — THE WORLD</div><div style="height:20px"></div><img src="./banner.png" alt="ANSEM STORY banner"></section>
-<section class="section" id="dna"><div class="dna"><div><div class="eyebrow">/ 004 — CHARACTER DNA</div><div class="big">BUILT TO BE<br><em>RECOGNIZED.</em></div><p>The face, curls and goatee are the anchor. The rest is allowed to evolve. This creates a collection that feels varied without losing its character.</p><div class="rules"><div>FACE / LOCKED</div><div>STYLE / FLEXIBLE</div><div>ACTIVITY / UNIQUE</div></div></div><img src="./001.png" alt="Ansem character"></div></section>
-<section class="section" id="roadmap"><div class="eyebrow">/ 005 — ROADMAP</div><div class="big">THE STORY<br>KEEPS <em>GOING.</em></div><div class="roadmap-grid"><article class="road"><b>01</b><h3>THE FIRST WALL</h3><p>Launch the core collection with clean, recognizable Ansem moments.</p></article><article class="road"><b>02</b><h3>NEW CHAPTERS</h3><p>Expand the wardrobe, activities and special editions while keeping the identity locked.</p></article><article class="road"><b>03</b><h3>COMMUNITY MOMENTS</h3><p>Turn community ideas into future outfits, moods and story moments.</p></article></div></section>
-<section class="section"><div class="final"><div class="eyebrow">ANSEM STORY</div><div class="big">COLLECT THE<br><em>MOMENTS.</em></div><a class="btn" href="#collection">ENTER THE WALL →</a></div></section>
-</main><footer><div class="logo"><img class="logo-img" src="./001.png" alt="ANSEM STORY logo">ANSEM<b>STORY</b></div><div>ONE FACE. ENDLESS STORIES.</div><div>© 2026</div><a href="https://x.com/ansemstory" target="_blank" rel="noopener noreferrer" class="twitter-link">X / @ANSEMSTORY ↗</a></footer>
-<div class="modal" id="modal"><button class="close" id="close">×</button><div class="modal-card"><div><img id="modalImg" class="modal-img" alt=""></div><div class="modal-info"><div class="eyebrow">ANSEM STORY / MOMENT</div><h3 id="modalTitle">#001</h3><p id="modalDesc">A unique Ansem moment.</p><div class="rules"><div>CHARACTER / ANSEM</div><div>STYLE / UNIQUE</div><div>BACKGROUND / SOLID</div></div></div></div></div>
-<script>
-const grid=document.getElementById('grid');const modal=document.getElementById('modal');const modalImg=document.getElementById('modalImg');const modalTitle=document.getElementById('modalTitle');
-function render(){grid.innerHTML='';for(let i=1;i<=50;i++){let n=String(i).padStart(3,'0');let el=document.createElement('article');el.className='card';el.innerHTML='<span class="num">#'+n+'</span><img loading="lazy" src="./'+n+'.png" alt="ANSEM STORY #'+n+'"><div class="meta"><strong>ANSEM #'+n+'</strong><small>ANSEM STORY</small></div>';let img=el.querySelector('img');img.onerror=()=>{img.style.visibility='hidden'};el.onclick=()=>{modalImg.src='./'+n+'.png';modalTitle.textContent='ANSEM #'+n;modal.classList.add('open')};grid.appendChild(el)}}
-document.getElementById('close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});render();
 
-/* Hero swipe carousel */
-const heroTrack=document.getElementById('heroTrack');const heroDots=[...document.querySelectorAll('.hero-dot')];let heroIndex=0;let heroStartX=0;let heroDeltaX=0;
-function heroGo(i){heroIndex=(i+5)%5;heroTrack.style.transform='translateX(-'+(heroIndex*100)+'%)';heroDots.forEach((d,k)=>d.classList.toggle('active',k===heroIndex))}
-document.getElementById('heroPrev').onclick=()=>heroGo(heroIndex-1);document.getElementById('heroNext').onclick=()=>heroGo(heroIndex+1);heroDots.forEach(d=>d.onclick=()=>heroGo(Number(d.dataset.slide)));
-const heroSlider=document.getElementById('heroSlider');heroSlider.addEventListener('touchstart',e=>{heroStartX=e.touches[0].clientX;heroDeltaX=0},{passive:true});heroSlider.addEventListener('touchmove',e=>{heroDeltaX=e.touches[0].clientX-heroStartX},{passive:true});heroSlider.addEventListener('touchend',()=>{if(Math.abs(heroDeltaX)>45)heroGo(heroIndex+(heroDeltaX<0?1:-1))});
-</script></body></html>
+
+<body>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">
+LAUNCHPAD
+</div>
+
+<button class="connect" id="connectWallet">
+Connect Wallet
+</button>
+
+</nav>
+
+
+<section class="hero">
+
+<h1>
+Launch your token.
+</h1>
+
+<p>
+Create a token, configure your launch,
+set your creator options and start trading
+through an automated ETH bonding curve.
+</p>
+
+<button onclick="document.getElementById('create').scrollIntoView()">
+Create Token
+</button>
+
+</section>
+
+
+
+<section class="card" id="create">
+
+<h2>Create Token</h2>
+
+
+<div class="section">
+
+<h3>Token Information</h3>
+
+<div class="grid">
+
+
+<div class="field">
+
+<label>Token Name</label>
+
+<input
+id="tokenName"
+placeholder="My Meme Token"
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Token Symbol</label>
+
+<input
+id="tokenSymbol"
+placeholder="MEME"
+/>
+
+</div>
+
+
+
+<div class="field full">
+
+<label>Description</label>
+
+<textarea
+id="description"
+placeholder="Tell everyone about your token..."
+></textarea>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Choose Image</label>
+
+<input
+id="tokenImage"
+type="file"
+accept="image/*"
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>X / Twitter Link</label>
+
+<input
+id="twitter"
+placeholder="https://x.com/yourtoken"
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Telegram Link</label>
+
+<input
+id="telegram"
+placeholder="https://t.me/yourtoken"
+/>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="section">
+
+<h3>Launch Configuration</h3>
+
+<div class="grid">
+
+
+<div class="field">
+
+<label>Paired Asset</label>
+
+<select id="pairedAsset">
+
+<option value="ETH">
+ETH
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Total Supply</label>
+
+<input
+id="supply"
+type="number"
+value="1000000000"
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Graduate Once Curve Raises</label>
+
+<input
+value="1 ETH"
+disabled
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Developer Buy</label>
+
+<input
+id="developerBuy"
+type="number"
+step="0.0001"
+placeholder="0.00"
+/>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="section">
+
+<h3>Creator Settings</h3>
+
+<div class="grid">
+
+
+<div class="field">
+
+<label>Creator Wallet</label>
+
+<input
+id="creatorWallet"
+placeholder="0x..."
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Creator Tax</label>
+
+<select id="creatorTax">
+
+<option value="0">
+0%
+</option>
+
+<option value="100">
+1%
+</option>
+
+<option value="200">
+2%
+</option>
+
+<option value="300">
+3%
+</option>
+
+<option value="500">
+5%
+</option>
+
+<option value="1000">
+10%
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="section">
+
+<h3>Team Wallets</h3>
+
+<p style="color:#888">
+Declare wallets your team opens with.
+</p>
+
+<textarea
+id="teamWallets"
+placeholder="One wallet address per line&#10;0x123...&#10;0x456..."
+></textarea>
+
+</div>
+
+
+
+<div class="section">
+
+<h3>Advanced Options</h3>
+
+<div class="grid">
+
+
+<div class="field">
+
+<label>Max Wallet</label>
+
+<input
+id="maxWallet"
+placeholder="Optional"
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Max Transaction</label>
+
+<input
+id="maxTransaction"
+placeholder="Optional"
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Snipe Tax Exemptions</label>
+
+<select id="snipeExemption">
+
+<option>
+Creator + Team Wallets
+</option>
+
+<option>
+Creator Only
+</option>
+
+<option>
+None
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Opening Buy Tax</label>
+
+<input
+value="99%"
+disabled
+/>
+
+</div>
+
+
+
+<div class="field">
+
+<label>Tax Decay</label>
+
+<input
+value="99% → 0% over 3 seconds"
+disabled
+/>
+
+</div>
+
+
+</div>
+
+
+<div class="protection">
+
+<strong>
+Launch Protection
+</strong>
+
+<p style="color:#888">
+
+Buys during the launch second pay
+99% tax. The tax decays linearly to
+0% across 3 seconds.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<button
+class="launch"
+id="launchToken"
+>
+
+🚀 LAUNCH TOKEN
+
+</button>
+
+
+<div
+class="status"
+id="status"
+>
+
+Connect your wallet to launch a token.
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+Pons-style Token Launchpad MVP
+
+</footer>
+
+</div>
+
+
+
+<script>
+
+const RPC =
+"https://rpc.testnet.chain.robinhood.com";
+
+const CHAIN_ID = 46630;
+
+let provider;
+let signer;
+let wallet;
+
+
+
+async function addNetwork(){
+
+if(!window.ethereum){
+
+alert(
+"Please open this website inside MetaMask or another EVM wallet."
+);
+
+return;
+
+}
+
+try{
+
+await window.ethereum.request({
+
+method:
+"wallet_addEthereumChain",
+
+params:[{
+
+chainId:
+"0xb6e6",
+
+chainName:
+"Robinhood Chain Testnet",
+
+nativeCurrency:{
+name:"Ether",
+symbol:"ETH",
+decimals:18
+},
+
+rpcUrls:[
+RPC
+],
+
+blockExplorerUrls:[
+"https://explorer.testnet.chain.robinhood.com"
+]
+
+}]
+
+});
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+document
+.getElementById("connectWallet")
+.addEventListener(
+"click",
+async function(){
+
+if(!window.ethereum){
+
+alert(
+"Install MetaMask or open the page in a wallet browser."
+);
+
+return;
+
+}
+
+try{
+
+provider =
+new ethers.BrowserProvider(
+window.ethereum
+);
+
+await provider.send(
+"eth_requestAccounts",
+[]
+);
+
+signer =
+await provider.getSigner();
+
+wallet =
+await signer.getAddress();
+
+document
+.getElementById("connectWallet")
+.innerText =
+wallet.slice(0,6)
++
+"..."
++
+wallet.slice(-4);
+
+document
+.getElementById("creatorWallet")
+.value =
+wallet;
+
+document
+.getElementById("status")
+.innerText =
+"Wallet connected: "
++
+wallet;
+
+}catch(error){
+
+document
+.getElementById("status")
+.innerText =
+error.message;
+
+}
+
+});
+
+
+
+document
+.getElementById("launchToken")
+.addEventListener(
+"click",
+async function(){
+
+if(!wallet){
+
+alert(
+"Connect your wallet first."
+);
+
+return;
+
+}
+
+
+
+const name =
+document
+.getElementById("tokenName")
+.value
+.trim();
+
+const symbol =
+document
+.getElementById("tokenSymbol")
+.value
+.trim();
+
+const description =
+document
+.getElementById("description")
+.value
+.trim();
+
+const twitter =
+document
+.getElementById("twitter")
+.value
+.trim();
+
+const telegram =
+document
+.getElementById("telegram")
+.value
+.trim();
+
+const supply =
+document
+.getElementById("supply")
+.value;
+
+const developerBuy =
+document
+.getElementById("developerBuy")
+.value;
+
+
+
+if(!name){
+
+alert("Enter token name.");
+
+return;
+
+}
+
+
+
+if(!symbol){
+
+alert("Enter token symbol.");
+
+return;
+
+}
+
+
+
+if(!supply){
+
+alert("Enter total supply.");
+
+return;
+
+}
+
+
+
+const creator =
+document
+.getElementById("creatorWallet")
+.value
+.trim();
+
+
+
+if(!ethers.isAddress(creator)){
+
+alert(
+"Enter a valid creator wallet."
+);
+
+return;
+
+}
+
+
+
+const teams =
+document
+.getElementById("teamWallets")
+.value
+.split(/\n|,/)
+.map(
+x=>x.trim()
+)
+.filter(Boolean);
+
+
+
+for(
+const address of teams
+){
+
+if(
+!ethers.isAddress(address)
+){
+
+alert(
+"Invalid team wallet: "
++
+address
+);
+
+return;
+
+}
+
+}
+
+
+
+document
+.getElementById("status")
+.innerHTML =
+
+"Launch configuration ready.<br><br>" +
+
+"<b>Name:</b> "
++
+name
++
+"<br>" +
+
+"<b>Symbol:</b> "
++
+symbol
++
+"<br>" +
+
+"<b>Supply:</b> "
++
+supply
++
+"<br>" +
+
+"<b>Pair:</b> ETH"
++
+"<br>" +
+
+"<b>Graduation:</b> 1 ETH"
++
+"<br>" +
+
+"<b>Developer Buy:</b> "
++
+(developerBuy || "0")
++
+" ETH"
++
+"<br><br>" +
+
+"Next step: connect this form to the Launchpad smart contract.";
+
+});
+
+
+
+</script>
+
+</body>
+</html>
